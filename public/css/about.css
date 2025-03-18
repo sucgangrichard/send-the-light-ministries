@@ -1,5 +1,5 @@
 .about-1{
-    margin: 30px;
+    margin: 0%;
     padding: 5px;
 }
 
@@ -69,6 +69,20 @@
 
 .about{
     padding-bottom: 2%;
+}
+
+.wrapper{
+    /* justify-items: center;
+     */
+    /* width: 58%; */
+    
+    /* border-radius: 10px; */
+    /* background: rgba(0,0,0,0.7); */
+    /* margin: 60px auto; */
+    /* text-align: center;  */
+    /* position: relative; */
+    /* z-index: 9999; */
+    /* margin: 100%; */
 }
 
 
