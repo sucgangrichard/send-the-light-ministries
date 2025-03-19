@@ -1,3 +1,6 @@
+/*--------------------------------------------------------------
+# Articles
+--------------------------------------------------------------*/
 :root {
     --primary-color: #5e72e4;
     --secondary-color: #f5365c;
@@ -8,10 +11,12 @@
     --white-color: #ffffff;
     --section-bg-color: #f6f9fe;
     --box-shadow: 0 5px 25px 0 rgba(0, 0, 0, 0.1);
-  }
-/*--------------------------------------------------------------
-# Articles
---------------------------------------------------------------*/
+}
+
+#articlemargin{
+  margin-top: 5%;
+}
+
 .articles .article-card {
     background: var(--white-color);
     border-radius: 8px;
@@ -66,6 +71,15 @@
     text-overflow: ellipsis;
     margin-bottom: 15px;
   }
+
+  .articles .wesmall {
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-bottom: 15px;
+  }
   
   .articles .btn-read {
     display: inline-block;
@@ -77,7 +91,7 @@
   }
   
   .articles .btn-read:hover {
-    background: var(--secondary-color);
+    background: var(--white-color);
   }
   
   .articles .btn-explore {
@@ -90,15 +104,40 @@
   }
   
   .articles .btn-explore:hover {
-    background: var(--secondary-color);
+    background: var(--white-color);
   }
 
-  .section-title {
+  .articles a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: 0.3s;
+  }
+  
+  .articles a:hover {
+    color: green;
+    text-decoration: none;
+  }
+
+  .articles h1, h2, h3, h4, h5, h6 {
+    font-family: "Raleway", sans-serif;
+    color: var(--dark-text-color);
+  }
+  
+  .articles section {
+    padding: 80px 0;
+    overflow: hidden;
+  }
+  
+  /* .articles .section-bg {
+    background-color: var(--section-bg-color);
+  }
+   */
+  .articles .section-title {
     text-align: center;
     padding-bottom: 30px;
   }
   
-  .section-title h2 {
+  .articles .section-title h2 {
     font-size: 32px;
     font-weight: 600;
     margin-bottom: 20px;
@@ -106,7 +145,7 @@
     position: relative;
   }
   
-  .section-title h2::after {
+  .articles .section-title h2::after {
     content: '';
     position: absolute;
     display: block;
@@ -117,31 +156,7 @@
     left: calc(50% - 25px);
   }
   
-  .section-title p {
+  .articles .section-title p {
     margin-bottom: 0;
   }
-
-  a {
-    color: var(--primary-color);
-    text-decoration: none;
-    transition: 0.3s;
-  }
   
-  a:hover {
-    color: var(--secondary-color);
-    text-decoration: none;
-  }
-  
-  h1, h2, h3, h4, h5, h6 {
-    font-family: "Raleway", sans-serif;
-    color: var(--dark-text-color);
-  }
-  
-  section {
-    padding: 80px 0;
-    overflow: hidden;
-  }
-  
-  .section-bg {
-    background-color: var(--section-bg-color);
-  }

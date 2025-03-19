@@ -1,0 +1,176 @@
+/*--------------------------------------------------------------
+# Videos
+--------------------------------------------------------------*/
+
+:root {
+    --primary-color: #5e72e4;
+    --secondary-color: #f5365c;
+    --text-color: #525f7f;
+    --light-text-color: #8898aa;
+    --dark-text-color: #32325d;
+    --background-color: #f8f9fe;
+    --white-color: #ffffff;
+    --section-bg-color: #f6f9fe;
+    --box-shadow: 0 5px 25px 0 rgba(0, 0, 0, 0.1);
+}
+
+#videomargin{
+    margin-top: 5%;
+}
+
+.videos .video-card {
+    background: var(--white-color);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: var(--box-shadow);
+    transition: all 0.3s ease-in-out;
+    height: 100%;
+  }
+  
+  .videos .video-card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .videos .video-thumbnail {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .videos .video-thumbnail img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    transition: 0.5s;
+  }
+  
+  .videos .video-card:hover .video-thumbnail img {
+    transform: scale(1.1);
+  }
+  
+  .videos .play-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60px;
+    height: 60px;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.3s;
+  }
+  
+  .videos .play-button i {
+    color: var(--primary-color);
+    font-size: 24px;
+  }
+  
+  .videos .video-card:hover .play-button {
+    background: var(--primary-color);
+  }
+  
+  .videos .video-card:hover .play-button i {
+    color: var(--white-color);
+  }
+  
+  .videos .video-content {
+    padding: 20px;
+  }
+  
+  .videos .video-date {
+    display: block;
+    font-size: 14px;
+    color: var(--light-text-color);
+    margin-bottom: 10px;
+  }
+  
+  .videos .video-content h3 {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 15px;
+  }
+  
+  .videos .video-description {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  .videos .btn-explore {
+    display: inline-block;
+    padding: 10px 30px;
+    background: var(--primary-color);
+    color: var(--white-color);
+    border-radius: 50px;
+    transition: 0.3s;
+  }
+  
+  .videos .btn-explore:hover {
+    background: var(--white-color);
+  }
+
+  .videos a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: 0.3s;
+  }
+  
+  .videos a:hover {
+    color: green;
+    text-decoration: none;
+  }
+
+  .videos h1, h2, h3, h4, h5, h6 {
+    font-family: "Raleway", sans-serif;
+    color: var(--dark-text-color);
+  }
+  
+  .videos section {
+    padding: 80px 0;
+    overflow: hidden;
+  }
+
+  .videos .wesmall {
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-bottom: 15px;
+  }
+  
+  /* .articles .section-bg {
+    background-color: var(--section-bg-color);
+  }
+   */
+  .videos .section-title {
+    text-align: center;
+    padding-bottom: 30px;
+  }
+  
+  .videos .section-title h2 {
+    font-size: 32px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    position: relative;
+  }
+  
+  .videos .section-title h2::after {
+    content: '';
+    position: absolute;
+    display: block;
+    width: 50px;
+    height: 3px;
+    background: var(--primary-color);
+    bottom: 0;
+    left: calc(50% - 25px);
+  }
+  
+  .videos .section-title p {
+    margin-bottom: 0;
+  }

@@ -1,12 +1,27 @@
 .about-1{
     margin: 0%;
     padding: 5px;
+    margin-top: 5%;
 }
 
 .about-1 h1{
     text-align: center;
-    color: black;
     font-weight: bold;
+	background: linear-gradient(90deg, #ff0000, #ffff00, #ff00f3, #0033ff, #ff00c4, #ff0000);
+	background-size: 400%;
+	-webkit-text-fill-color: transparent;
+	-webkit-background-clip: text;
+	animation: animate 10s linear infinite;
+}
+
+@keyframes animate {
+	0% {
+		background-position: 0%;
+	}
+
+	100% {
+		background-position: 400%;
+	}
 }
 .about-1 p{
     text-align: center;
@@ -58,32 +73,13 @@
     transition: all 400ms ease-in-out;
 }
 
-.main3 {
-    min-height: 50vh;
-      width: 100%;
-      background-position: center;
-      background-size: cover;
-      background-image: url(../icons/two.jpg);
-      background-attachment: fixed;
-}
 
 .about{
     padding-bottom: 2%;
+    /* background-color: var(--section-bg-color); */
 }
 
-.wrapper{
-    /* justify-items: center;
-     */
-    /* width: 58%; */
-    
-    /* border-radius: 10px; */
-    /* background: rgba(0,0,0,0.7); */
-    /* margin: 60px auto; */
-    /* text-align: center;  */
-    /* position: relative; */
-    /* z-index: 9999; */
-    /* margin: 100%; */
-}
+
 
 
 
