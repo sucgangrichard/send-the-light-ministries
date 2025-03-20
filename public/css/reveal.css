@@ -1,0 +1,96 @@
+/* Reveal Effects CSS - Optimized Version */
+
+/* Base reveal class - hidden by default */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s cubic-bezier(0.5, 0, 0.1, 1), 
+                transform 0.8s cubic-bezier(0.5, 0, 0.1, 1);
+    will-change: opacity, transform;
+}
+
+/* Active state when element is in viewport */
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Different reveal animations - optimized with will-change */
+.reveal-fade {
+    opacity: 0;
+    transition: opacity 0.8s cubic-bezier(0.5, 0, 0.1, 1);
+    will-change: opacity;
+}
+
+.reveal-fade.active {
+    opacity: 1;
+}
+
+.reveal-slide-left {
+    opacity: 0;
+    transform: translateX(-50px);
+    transition: opacity 0.8s cubic-bezier(0.5, 0, 0.1, 1), 
+                transform 0.8s cubic-bezier(0.5, 0, 0.1, 1);
+    will-change: opacity, transform;
+}
+
+.reveal-slide-left.active {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.reveal-slide-right {
+    opacity: 0;
+    transform: translateX(50px);
+    transition: opacity 0.8s cubic-bezier(0.5, 0, 0.1, 1), 
+                transform 0.8s cubic-bezier(0.5, 0, 0.1, 1);
+    will-change: opacity, transform;
+}
+
+.reveal-slide-right.active {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.reveal-zoom {
+    opacity: 0;
+    transform: scale(0.9);
+    transition: opacity 0.8s cubic-bezier(0.5, 0, 0.1, 1), 
+                transform 0.8s cubic-bezier(0.5, 0, 0.1, 1);
+    will-change: opacity, transform;
+}
+
+.reveal-zoom.active {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* Delay classes for staggered animations */
+.delay-1 {
+    transition-delay: 0.1s;
+}
+
+.delay-2 {
+    transition-delay: 0.2s;
+}
+
+.delay-3 {
+    transition-delay: 0.3s;
+}
+
+.delay-4 {
+    transition-delay: 0.4s;
+}
+
+.delay-5 {
+    transition-delay: 0.5s;
+}
+
+/* Media query to disable animations on mobile devices for better performance */
+@media (prefers-reduced-motion: reduce) {
+    .reveal, .reveal-fade, .reveal-slide-left, .reveal-slide-right, .reveal-zoom {
+        transition: none !important;
+        transform: none !important;
+        opacity: 1 !important;
+    }
+}
