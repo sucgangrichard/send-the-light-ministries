@@ -309,66 +309,57 @@ nav ul li a:hover:after {
       transform: scale(1.1);
     }
     
-    .blogs-section .blog-overview {
+    .blogs-section .article-content {
       padding: 20px;
+      /* border: #32325d 1px solid; */
     }
     
     .blogs-section .article-date {
       display: block;
       font-size: 14px;
       color: var(--light-text-color);
-      margin-bottom: 10px;
+      /* margin-bottom: 10px; */
+      margin-left: 16px;
     }
     
-    .blogs-section .blog-title h3 {
+    .blogs-section .article-content h3 {
       font-size: 20px;
       font-weight: 600;
       margin-bottom: 15px;
     }
     
     .blogs-section .blog-overview {
-      display: -webkit-box;
-      -webkit-line-clamp: 3;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      margin-bottom: 15px;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-bottom: 15px;
+    word-break: break-all;
     }
   
     .blogs-section .blog-title {
-      display: -webkit-box;
-      -webkit-line-clamp: 1;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      margin-bottom: 15px;
+        display: -webkit-box;
+        -webkit-line-clamp: 1;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        margin-bottom: 15px;
     }
     
     .blogs-section .btn-read {
-      display: inline-block;
-      padding: 8px 20px;
-      background: var(--primary-color);
-      color: var(--white-color);
-      border-radius: 50px;
-      transition: 0.3s;
+        display: inline-block;
+        padding: 8px 20px;
+        background: var(--primary-color);
+        color: var(--white-color);
+        border-radius: 50px;
+        transition: 0.3s;
     }
     
     .blogs-section .btn-read:hover {
       background: var(--white-color);
     }
     
-    .blogs-section .btn-explore {
-      display: inline-block;
-      padding: 10px 30px;
-      background: var(--primary-color);
-      color: var(--white-color);
-      border-radius: 50px;
-      transition: 0.3s;
-    }
-    
-    .blogs-section .btn-explore:hover {
-      background: var(--white-color);
-    }
   
     .blogs-section a {
       color: var(--primary-color);
