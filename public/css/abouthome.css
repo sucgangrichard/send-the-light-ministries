@@ -3,11 +3,17 @@
     padding: 5px;
     margin-top: 5%;
 }
-
+/* #ffff00 */
 .about-1 h1{
-    text-align: center;
+    text-align: center; 
     font-weight: bold;
-	background: linear-gradient(90deg, #ff0000, #ffff00, #ff00f3, #0033ff, #ff00c4, #ff0000);
+	background: linear-gradient(90deg, 
+    #FF7E5F, /* Warm orange */
+    #FEB47B, /* Light orange */
+    #FFD700, /* Gold */
+    #7FFF00, /* Bright green */
+    #00BFFF, /* Sky blue */
+    #FF7E5F  /* Warm orange */);
 	background-size: 400%;
 	-webkit-text-fill-color: transparent;
 	-webkit-background-clip: text;

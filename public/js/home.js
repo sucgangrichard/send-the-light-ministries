@@ -1,8 +1,9 @@
 const blogSection = document.querySelector('.blogs-section');
+const blogsRow = document.getElementById('blogs-row');
 
 db.collection("blogs").get().then((blogs) => {
     blogs.forEach(blog => {
-        if(blog.id != decodeURI(location.pathname.split("/").pop())){
+        if (blog.id != decodeURI(location.pathname.split("/").pop())) {
             createBlog(blog);
         }
     })
@@ -10,12 +11,19 @@ db.collection("blogs").get().then((blogs) => {
 
 const createBlog = (blog) => {
     let data = blog.data();
-    blogSection.innerHTML += `
-    <div class="blog-card">
-        <img src="${data.bannerImage}" class="blog-image" alt="">
-        <h1 class="blog-title">${data.title.substring(0, 100) + '...'}</h1>
-        <p class="blog-overview">${data.article.substring(0, 200) + '...'}</p>
-        <a href="/${blog.id}" class="btn dark">read</a>
-    </div>
+    const blogCol = document.createElement('div');
+    blogCol.className = 'col-lg-4 col-md-6 mb-4';
+    blogCol.innerHTML = `
+        <div class="blog-card reveal-slide-left delay-1">
+            <div class="article-img">
+                <img src="${data.bannerImage}" class="blog-image img-fluid" alt="${data.title}">
+            </div>
+            <div class="article-content">
+                <h3 class="blog-title">${data.title.substring(0, 100)}...</h3>
+                <p class="blog-overview">${data.article.substring(0, 200)}...</p>
+                <a href="/${blog.id}" class="btn-read">Read</a>
+            </div>
+        </div>
     `;
-}
+    blogsRow.appendChild(blogCol);
+};
