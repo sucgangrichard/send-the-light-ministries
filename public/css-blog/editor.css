@@ -16,7 +16,7 @@
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    background: rgba(0, 0, 0, 0.1);
+    /* background: rgba(0, 0, 0, 0.1); */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -24,7 +24,7 @@
 }
 
 .banner-upload-btn img{
-    width: 20px;
+    width: 100px;
 }
 
 /* Blog Section */

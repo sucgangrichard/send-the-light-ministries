@@ -31,7 +31,9 @@ const createBlog = (id, data) => {
             </div>
             <div class="article-content">
                 <p class="article-date">${data.publishedAt}</p>
-                <h3 class="blog-title">${data.title.substring(0, 100)}</h3>
+                <h3 class="blog-title">${data.title.length > 100
+                    ? data.title.substring(0, 100) + '...'
+                    : data.title}</h3>
                 <p class="blog-overview">${cleanedOverview}...</p>
                 <a href="/${id}" class="btn-read">Read More</a>
             </div>

@@ -89,7 +89,7 @@ publishBtn.addEventListener('click', () => {
             
         })
         .then(() => {
-            location.href = `/${docName}`; 
+            location.href = `/blog`;
         })
         .catch((err) => {
             console.log(err);

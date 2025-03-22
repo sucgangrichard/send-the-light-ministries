@@ -13,7 +13,7 @@ body{
     align-items: center;
     z-index: 99;
     background: #fff;
-}
+} 
 
 /* login hover effect */
 .firebaseui-idp-button:hover{
@@ -24,6 +24,7 @@ body{
     color: #fff !important;
     transition: .5s;
 }
+     
 .heading{
     color: rgba(0,0, 0,0.5);
     font-size: 60px;
@@ -32,7 +33,7 @@ body{
     margin: 100px 0 20px;
 }
 
-.btn.grey{
+/* .btn.grey{
     background: #c5c5c5;
     color: #000;
     margin: 0 10px;
@@ -41,7 +42,7 @@ body{
 .btn.danger{
     background: #f00;
     color: #fff;
-}
+} */
 
 /*Blog Section*/
 /* .blog-section{

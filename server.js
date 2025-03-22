@@ -13,11 +13,14 @@ app.use(express.static(initial_path));
 app.use(fileupload());
 
 app.get('/', (req, res) => {
-    res.sendFile(path.join(initial_path, "home-blog.html"));
+    res.sendFile(path.join(initial_path, "home.html"));
 })
 
 app.get('/editor', (req, res) => {
     res.sendFile(path.join(initial_path, "editor.html"));
+})
+app.get("/blog", (req, res) => {
+    res.sendFile(path.join(initial_path, "home-blog.html"));
 })
 
 app.post('/upload', (req, res) => {
