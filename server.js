@@ -54,6 +54,16 @@ app.get("/blog", (req, res) => {
     res.sendFile(path.join(initial_path, "home-blog.html"));
 });
 
+// Add this route before the 404 handler
+app.get('/index', (req, res) => {
+    res.sendFile(path.join(initial_path, "index.html"));
+});
+
+// Keep your existing routes but add this catch-all
+// app.get('*', (req, res) => {
+//     res.sendFile(path.join(initial_path, "index.html"));
+// });
+
 app.post('/upload', (req, res) => {
     let file = req.files.image;
     let date = new Date();
@@ -182,15 +192,7 @@ app.post('/api/settings/update-interval', (req, res) => {
     }
 });
 
-// Add this route before the 404 handler
-app.get('/index', (req, res) => {
-    res.sendFile(path.join(initial_path, "index.html"));
-});
 
-// Keep your existing routes but add this catch-all
-app.get('*', (req, res) => {
-    res.sendFile(path.join(initial_path, "index.html"));
-});
 
 // ---------------------------
 // Error Handling
