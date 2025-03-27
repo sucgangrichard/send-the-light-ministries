@@ -24,7 +24,7 @@
 
 <body>
     <!-- Navigation Bar -->
-    <nav class="navbar navbar-expand-lg ">
+    <nav class="navbar navbar-expand-lg sticky-top navbar-light bg-light">
         <div class="container" id="header">
             <a class="navbar-brand" href="home.html"><img src="../icons/stlp-logo.jpg"
                     alt="Send The Light Ministries Logo" class="img-fluid">
@@ -40,19 +40,19 @@
                         <a class="nav-link active" aria-current="page" href="#">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">About</a>
+                        <a class="nav-link" href="#about">About</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/blog">Articles</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Watch</a>
+                        <a class="nav-link" href="#videos">Watch</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Contact</a>
+                        <a class="nav-link" href="#contact">Contact</a>
                     </li>
                 </ul>
-                <div class="d-flex">
+                <!-- <div class="d-flex">
                     <div class="search-container">
                         <input type="text" id="searchInput" class="form-control search-input" placeholder="Search..."
                             aria-label="Search">
@@ -60,7 +60,7 @@
                             <i class="fas fa-search"></i>
                         </button>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
     </nav>
@@ -70,8 +70,10 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 mx-auto text-center">
-                    <h1 class="reveal-fade delay-1">WE <span class="yelo">LOVE</span> GOD, WE <span class="yelo">BELIEVE</span> IN GOD <br>A Church with God's Ambition
+                    <h1 class="reveal-fade delay-1">A Church with God's Ambition
                     </h1>
+                    <!-- <h1 class="reveal-fade delay-1">WE <span class="yelo">LOVE</span> GOD, WE <span class="yelo">BELIEVE</span> IN GOD <br>A Church with God's Ambition
+                    </h1> -->
                     <h2 class="reveal-fade delay-2">Started March 2017 <br> Present with Bishop Paul Solomon M.
                         Maglaya.</h2>
                     <div class="d-flex justify-content-center reveal-fade delay-3">
@@ -145,7 +147,7 @@
             <div class="section-title reveal-fade">
                 <h2>Featured Articles</h2>
                 <div class="text-center mb-4 ">
-                    <a href="#" class="btn-explore">Explore More</a>
+                    <a href="home-blog.html" class="btn-explore">Explore More</a>
                 </div>
             </div>
 
@@ -207,62 +209,6 @@
                     </div>
                 </div>
 
-                <!-- Article 4 -->
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="article-card ">
-                        <div class="article-img">
-                            <img src="../icons/stlp-logo.jpg" class="img-fluid" alt="Article 4">
-                        </div>
-                        <div class="article-content ">
-                            <span class="article-date">February 28, 2025</span>
-                            <h3 class="wesmall">Prayer: The Lifeline to God</h3>
-                            <p class="article-description">
-                                Prayer is our direct communication line with God. This article explores different types
-                                of prayer, how to develop a consistent prayer life, and testimonies of answered prayers
-                                from our congregation.
-                            </p>
-                            <a href="#" class="btn-read">Read More</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Article 5 -->
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="article-card">
-                        <div class="article-img">
-                            <img src="../icons/stlp-logo.jpg" class="img-fluid" alt="Article 5">
-                        </div>
-                        <div class="article-content">
-                            <span class="article-date">February 20, 2025</span>
-                            <h3 class="wesmall">Serving Others: Christ's Example</h3>
-                            <p class="article-description">
-                                Jesus came not to be served but to serve. As His followers, we're called to serve others
-                                with love and humility. Learn practical ways to serve in your church, community, and
-                                beyond.
-                            </p>
-                            <a href="#" class="btn-read">Read More</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Article 6 -->
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="article-card">
-                        <div class="article-img">
-                            <img src="../icons/stlp-logo.jpg" class="img-fluid" alt="Article 6">
-                        </div>
-                        <div class="article-content">
-                            <span class="article-date">February 15, 2025</span>
-                            <h3 class="wesmall">The Transformative Power of God's Word</h3>
-                            <p class="article-description">
-                                Scripture has the power to transform lives. This article shares testimonies of how God's
-                                Word has changed lives in our congregation and provides guidance on effective Bible
-                                study methods.
-                            </p>
-                            <a href="#" class="btn-read">Read More</a>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </section>
@@ -308,7 +254,7 @@
                                 <i class="fas fa-play"></i>
                             </div>
                         </div>
-                        <div class="video-c">
+                        <div class="video-content">
                             <span class="video-date">March 5, 2025</span>
                             <h3 class="wesmall">Worship Night Highlights</h3>
                             <p class="video-description">
@@ -341,68 +287,7 @@
                     </div>
                 </div>
 
-                <!-- Video 4 -->
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="video-card ">
-                        <div class="video-thumbnail">
-                            <img src="../icons/stlp-logo.jpg" class="img-fluid" alt="Video 4">
-                            <div class="play-button">
-                                <i class="fas fa-play"></i>
-                            </div>
-                        </div>
-                        <div class="video-conten r">
-                            <span class="video-date">February 19, 2025</span>
-                            <h3 class="wesmall">Youth Ministry: Finding Your Purpose</h3>
-                            <p class="video-description">
-                                A special message for young people on discovering God's purpose for their lives. Learn
-                                how to navigate life's challenges while staying true to your faith and God-given
-                                calling.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Video 5 -->
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="video-card ">
-                        <div class="video-thumbnail">
-                            <img src="../icons/stlp-logo.jpg" class="img-fluid" alt="Video 5">
-                            <div class="play-button">
-                                <i class="fas fa-play"></i>
-                            </div>
-                        </div>
-                        <div class="video-content ">
-                            <span class="video-date">February 12, 2025</span>
-                            <h3 class="wesmall">Community Outreach: Serving with Love</h3>
-                            <p class="video-description">
-                                Watch highlights from our recent community outreach program. See how our church is
-                                making a difference by serving those in need and sharing God's love through practical
-                                actions.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Video 6 -->
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="video-card ">
-                        <div class="video-thumbnail">
-                            <img src="../icons/stlp-logo.jpg" class="img-fluid" alt="Video 6">
-                            <div class="play-button">
-                                <i class="fas fa-play"></i>
-                            </div>
-                        </div>
-                        <div class="video-content ">
-                            <span class="video-date">February 5, 2025</span>
-                            <h3 class="wesmall">Testimony: God's Healing Power</h3>
-                            <p class="video-description">
-                                Listen to powerful testimonies of healing and restoration from members of our
-                                congregation. Be encouraged by stories of God's faithfulness and miraculous
-                                intervention.
-                            </p>
-                        </div>
-                    </div>
-                </div>
+                
             </div>
         </div>
     </section>
