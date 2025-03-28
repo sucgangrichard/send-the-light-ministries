@@ -2,7 +2,7 @@
 
 // Configuration
 const config = {
-    refreshInterval: 300000, // Check for new videos every 5 minutes (300000ms)
+    refreshInterval: 30000, // Interval to check for new videos (ms)
     maxVideosPerChannel: Infinity,  // Maximum number of videos to display per channel
     defaultView: 'grid',     // Default view mode: 'grid' or 'list'
     apiBaseUrl: '/api'       // Base URL for API endpoints
@@ -16,7 +16,8 @@ const state = {
     viewMode: config.defaultView,
     lastUpdated: null,
     isLoading: true,
-    hasError: false
+    hasError: false,
+    searchQuery: ''
 };
 
 // DOM Elements
@@ -34,7 +35,9 @@ const elements = {
     videoChannel: document.getElementById('videoChannel'),
     videoDescription: document.getElementById('videoDescription'),
     videoPublished: document.getElementById('videoPublished'),
-    videoLink: document.getElementById('videoLink')
+    videoLink: document.getElementById('videoLink'),
+    searchInput: document.getElementById('searchInput'),
+    searchButton: document.getElementById('searchButton')
 };
 
 // Initialize the application
@@ -192,6 +195,17 @@ function addEventListeners() {
     elements.videoModal.addEventListener('hidden.bs.modal', () => {
         elements.videoIframe.src = '';
     });
+
+    // Search functionality
+    elements.searchInput.addEventListener('input', (e) => {
+        state.searchQuery = e.target.value.trim();
+        renderVideos();
+    });
+
+    elements.searchButton.addEventListener('click', () => {
+        state.searchQuery = elements.searchInput.value.trim();
+        renderVideos();
+    });
 }
 
 // Update the list of selected channels based on checkboxes
@@ -267,34 +281,45 @@ async function loadVideos() {
 
 // Render videos in the current view mode
 function renderVideos() {
-    // If still loading, don't render
     if (state.isLoading) return;
-
-    // If there's an error, don't render
     if (state.hasError) return;
 
-    // If no videos or no channels selected, show empty state
-    if (state.videos.length === 0 || state.selectedChannels.length === 0) {
+    const filteredVideos = getFilteredVideos();
+
+    // Update empty state condition
+    if (filteredVideos.length === 0 || state.selectedChannels.length === 0) {
         renderEmptyState();
         return;
     }
 
-    // Render based on view mode
     if (state.viewMode === 'grid') {
-        renderGridView();
+        renderGridView(filteredVideos);
     } else {
-        renderListView();
+        renderListView(filteredVideos);
     }
 }
 
 // Render empty state when no videos are available
 function renderEmptyState() {
+    let title, message;
+
+    if (state.selectedChannels.length === 0) {
+        title = 'No channels selected';
+        message = 'Select at least one channel from the dropdown menu to see videos.';
+    } else if (state.searchQuery) {
+        title = 'No videos found';
+        message = `No videos match your search for "${state.searchQuery}".`;
+    } else {
+        title = 'No videos to display';
+        message = 'Check back later for new videos.';
+    }
+
     const emptyState = `
         <div class="col-12">
             <div class="empty-state">
                 <i class="fas fa-video-slash"></i>
-                <h3>No videos to display</h3>
-                <p>Select at least one channel from the dropdown menu to see videos.</p>
+                <h3>${title}</h3>
+                <p>${message}</p>
             </div>
         </div>
     `;
@@ -304,10 +329,9 @@ function renderEmptyState() {
 }
 
 // Render videos in grid view
-function renderGridView() {
+function renderGridView(videos) {
     elements.videosGrid.innerHTML = '';
-
-    state.videos.forEach(video => {
+    videos.forEach(video => {
         const videoCard = document.createElement('div');
         videoCard.className = 'col';
         videoCard.innerHTML = `
@@ -332,9 +356,8 @@ function renderGridView() {
 }
 
 // Render videos in list view
-function renderListView() {
+function renderListView(videos) {
     elements.videosList.innerHTML = '';
-
     const listGroup = document.createElement('div');
     listGroup.className = 'list-group';
 
@@ -483,4 +506,20 @@ function formatDate(dateString, full = false) {
     } else {
         return `${diffYear} ${diffYear === 1 ? 'year' : 'years'} ago`;
     }
+}
+
+function getFilteredVideos() {
+    let filtered = state.videos;
+
+    // Apply search filter
+    if (state.searchQuery) {
+        const query = state.searchQuery.toLowerCase();
+        filtered = filtered.filter(video => {
+            return video.title.toLowerCase().includes(query) ||
+                   video.description.toLowerCase().includes(query) ||
+                   video.channelTitle.toLowerCase().includes(query);
+        });
+    }
+
+    return filtered;
 }

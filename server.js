@@ -19,7 +19,7 @@ const youtube = google.youtube({
 // Channel Store
 const channelStore = {
     channels: [
-        { id: 'UCCh2Um8RmLPVcLKBWH1t3Og', name: 'Targetoir Twenty-three', thumbnail: '' }
+        { id: 'UCPYFnNXs42dDQ5eu29rmu8g', name: 'Send The Light Ministries - Proper Inc.', thumbnail: '' }
     ],
     videos: [],
     lastUpdated: null

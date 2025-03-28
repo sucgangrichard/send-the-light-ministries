@@ -22,7 +22,7 @@
     background: var(--white-color);
     border-radius: 8px;
     overflow: hidden;
-    box-shadow: var(--box-shadow);
+    /* box-shadow: var(--box-shadow); */
     transition: all 0.3s ease-in-out;
     height: 100%;
   }
@@ -136,11 +136,12 @@
 
   .videos .wesmall {
     display: -webkit-box;
-    -webkit-line-clamp: 1;
+    /* -webkit-line-clamp: 1; */
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
     margin-bottom: 15px;
+
   }
   
   /* .articles .section-bg {
@@ -174,3 +175,5 @@
   .videos .section-title p {
     margin-bottom: 0;
   }
+
+  

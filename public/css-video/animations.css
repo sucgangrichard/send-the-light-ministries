@@ -1,0 +1,611 @@
+/* YouTube Feed App - Enhanced Animations and Transitions */
+
+/* ===== GENERAL ANIMATIONS ===== */
+/* Fade-in animation for page elements */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Pulse animation for interactive elements */
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(0, 123, 255, 0.4);
+    }
+    70% {
+        transform: scale(1.02);
+        box-shadow: 0 0 0 10px rgba(0, 123, 255, 0);
+    }
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(0, 123, 255, 0);
+    }
+}
+
+/* Shimmer effect for loading states */
+@keyframes shimmer {
+    0% {
+        background-position: -1000px 0;
+    }
+    100% {
+        background-position: 1000px 0;
+    }
+}
+
+/* Bounce animation for attention-grabbing elements */
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-10px);
+    }
+    60% {
+        transform: translateY(-5px);
+    }
+}
+
+/* Rotate animation for loading indicators */
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* ===== ELEMENT-SPECIFIC ANIMATIONS ===== */
+
+/* Body and general page elements */
+body {
+    transition: background-color 0.5s ease;
+}
+
+/* Animated page load */
+main.container {
+    animation: fadeIn 0.8s ease-out forwards;
+}
+
+/* Navbar animations */
+.navbar {
+    transition: box-shadow 0.3s ease, background-color 0.3s ease;
+}
+
+.navbar:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-brand img {
+    transition: transform 0.3s ease;
+}
+
+.navbar-brand:hover img {
+    transform: scale(1.05);
+}
+
+.nav-link {
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 50%;
+    background-color: #0d6efd;
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+.nav-link.active::after {
+    width: 100%;
+}
+
+/* Search bar animations */
+.search-container {
+    transition: all 0.3s ease;
+}
+
+.search-container:focus-within {
+    transform: scale(1.02);
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.3);
+}
+
+.search-input {
+    transition: all 0.3s ease;
+}
+
+.search-btn {
+    transition: all 0.3s ease;
+}
+
+.search-btn:hover {
+    background-color: #0d6efd;
+    color: white;
+    transform: translateX(2px);
+}
+
+/* Heading animations */
+h2 {
+    position: relative;
+    overflow: hidden;
+    transition: color 0.3s ease;
+}
+
+h2::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #0d6efd;
+    transition: width 0.5s ease;
+}
+
+h2:hover::after {
+    width: 100%;
+}
+
+/* View toggle buttons animation */
+.btn-group .btn {
+    transition: all 0.3s ease;
+}
+
+.btn-group .btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.btn-group .btn.active {
+    transform: translateY(-2px);
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Loading spinner enhanced animation */
+#loadingSpinner .spinner-border {
+    animation: rotate 1s linear infinite, pulse 2s infinite;
+}
+
+#loadingSpinner p {
+    animation: fadeIn 1s ease-out forwards;
+}
+
+/* Video card animations */
+.video-card {
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
+                box-shadow 0.4s ease,
+                background-color 0.3s ease;
+    animation: fadeIn 0.6s ease-out forwards;
+}
+
+.video-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    z-index: 1;
+}
+
+.video-card:nth-child(odd) {
+    animation-delay: 0.1s;
+}
+
+.video-card:nth-child(even) {
+    animation-delay: 0.2s;
+}
+
+.video-card:nth-child(3n) {
+    animation-delay: 0.3s;
+}
+
+.video-thumbnail {
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.video-thumbnail img {
+    transition: transform 0.5s ease;
+}
+
+.video-card:hover .video-thumbnail img {
+    transform: scale(1.08);
+}
+
+.video-duration {
+    transition: all 0.3s ease;
+    opacity: 0.8;
+}
+
+.video-card:hover .video-duration {
+    background-color: rgba(0, 0, 0, 0.8);
+    opacity: 1;
+}
+
+.video-title {
+    transition: color 0.3s ease;
+}
+
+.video-card:hover .video-title {
+    color: #0d6efd;
+}
+
+.video-channel, .video-meta {
+    transition: all 0.3s ease;
+}
+
+.video-card:hover .video-channel {
+    color: #343a40;
+}
+
+/* List view animations */
+.video-list-item {
+    transition: all 0.3s ease;
+    animation: fadeIn 0.5s ease-out forwards;
+}
+
+.video-list-item:hover {
+    transform: translateX(5px);
+    background-color: rgba(13, 110, 253, 0.05);
+    border-left: 3px solid #0d6efd;
+    padding-left: 12px;
+}
+
+.video-list-item:nth-child(odd) {
+    animation-delay: 0.1s;
+}
+
+.video-list-item:nth-child(even) {
+    animation-delay: 0.2s;
+}
+
+.video-list-thumbnail {
+    transition: all 0.3s ease;
+    overflow: hidden;
+}
+
+.video-list-thumbnail img {
+    transition: transform 0.5s ease;
+}
+
+.video-list-item:hover .video-list-thumbnail img {
+    transform: scale(1.1);
+}
+
+.video-list-title {
+    transition: color 0.3s ease;
+}
+
+.video-list-item:hover .video-list-title {
+    color: #0d6efd;
+}
+
+/* Modal animations */
+.modal-content {
+    animation: fadeIn 0.3s ease-out forwards;
+    transition: all 0.3s ease;
+}
+
+.modal-header, .modal-footer {
+    transition: background-color 0.3s ease;
+}
+
+.modal-body {
+    transition: all 0.3s ease;
+}
+
+#videoDescription {
+    transition: all 0.3s ease;
+}
+
+#videoDescription:hover {
+    background-color: rgba(0, 0, 0, 0.02);
+    padding: 10px;
+    border-radius: 5px;
+}
+
+/* Footer animations */
+footer {
+    transition: all 0.3s ease;
+}
+
+footer:hover {
+    background-color: #e9ecef;
+}
+
+footer p {
+    transition: all 0.3s ease;
+}
+
+footer:hover p {
+    transform: scale(1.02);
+    color: #0d6efd;
+}
+
+/* Empty state animations */
+.empty-state i {
+    animation: pulse 2s infinite, rotate 10s linear infinite;
+}
+
+.empty-state h3 {
+    animation: fadeIn 0.8s ease-out forwards;
+}
+
+.empty-state p {
+    animation: fadeIn 1s ease-out forwards;
+}
+
+/* Update notification enhanced animations */
+.update-notification {
+    animation: slideIn 0.5s ease-out, pulse 2s infinite;
+    transition: all 0.3s ease;
+}
+
+.update-notification:hover {
+    transform: scale(1.05);
+}
+
+.update-notification .btn {
+    transition: all 0.3s ease;
+}
+
+.update-notification .btn:hover {
+    transform: scale(1.1);
+    background-color: white;
+    color: #0d6efd;
+}
+
+/* Channel dropdown animations */
+.dropdown-menu {
+    animation: fadeIn 0.3s ease-out forwards;
+    transition: all 0.3s ease;
+}
+
+.dropdown-item {
+    transition: all 0.3s ease;
+}
+
+.dropdown-item:hover {
+    transform: translateX(5px);
+    background-color: rgba(13, 110, 253, 0.1);
+}
+
+.channel-item img {
+    transition: all 0.3s ease;
+}
+
+.channel-item:hover img {
+    transform: scale(1.2) rotate(5deg);
+}
+
+/* Skeleton loading animation enhancement */
+.skeleton-loading {
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 1000px 100%;
+    animation: shimmer 2s infinite linear;
+}
+
+/* Dark mode transition */
+body.dark-mode-support,
+body.dark-mode-support .bg-light,
+body.dark-mode-support .card,
+body.dark-mode-support .list-group-item,
+body.dark-mode-support .modal-content,
+body.dark-mode-support .btn-outline-secondary {
+    transition: all 0.5s ease;
+}
+
+/* Hover effects for interactive elements */
+button, 
+.btn, 
+a, 
+input, 
+.form-check-input {
+    transition: all 0.3s ease;
+}
+
+/* Scrollbar animations */
+::-webkit-scrollbar-thumb {
+    transition: background 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+/* Background gradient animation */
+@keyframes gradientBG {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.gradient-bg {
+    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+}
+
+/* Staggered animation for multiple elements */
+.staggered-animation > * {
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.staggered-animation > *:nth-child(1) { animation: fadeIn 0.5s ease-out 0.1s forwards; }
+.staggered-animation > *:nth-child(2) { animation: fadeIn 0.5s ease-out 0.2s forwards; }
+.staggered-animation > *:nth-child(3) { animation: fadeIn 0.5s ease-out 0.3s forwards; }
+.staggered-animation > *:nth-child(4) { animation: fadeIn 0.5s ease-out 0.4s forwards; }
+.staggered-animation > *:nth-child(5) { animation: fadeIn 0.5s ease-out 0.5s forwards; }
+.staggered-animation > *:nth-child(6) { animation: fadeIn 0.5s ease-out 0.6s forwards; }
+.staggered-animation > *:nth-child(7) { animation: fadeIn 0.5s ease-out 0.7s forwards; }
+.staggered-animation > *:nth-child(8) { animation: fadeIn 0.5s ease-out 0.8s forwards; }
+.staggered-animation > *:nth-child(9) { animation: fadeIn 0.5s ease-out 0.9s forwards; }
+.staggered-animation > *:nth-child(10) { animation: fadeIn 0.5s ease-out 1s forwards; }
+
+/* Hover effect for cards */
+.hover-float {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hover-float:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Animated background for special sections */
+.animated-bg {
+    position: relative;
+    overflow: hidden;
+}
+
+.animated-bg::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, rgba(255,255,255,0.1) 25%, transparent 25%, 
+                transparent 50%, rgba(255,255,255,0.1) 50%, 
+                rgba(255,255,255,0.1) 75%, transparent 75%, transparent);
+    background-size: 20px 20px;
+    z-index: -1;
+    animation: gradientBG 15s linear infinite;
+}
+
+/* Animated border */
+.animated-border {
+    position: relative;
+}
+
+.animated-border::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border: 2px solid transparent;
+    border-radius: inherit;
+    background: linear-gradient(45deg, #0d6efd, #dc3545, #ffc107, #20c997) border-box;
+    -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: destination-out;
+    mask-composite: exclude;
+    animation: gradientBG 3s linear infinite;
+    background-size: 300% 300%;
+    pointer-events: none;
+}
+
+/* Typing animation for text */
+.typing-animation {
+    overflow: hidden;
+    border-right: 2px solid #0d6efd;
+    white-space: nowrap;
+    margin: 0 auto;
+    animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+}
+
+@keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+}
+
+@keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: #0d6efd }
+}
+
+/* Parallax effect for background elements */
+.parallax-bg {
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    transition: background-position 0.5s ease;
+}
+
+/* 3D card effect */
+.card-3d {
+    transition: transform 0.5s ease;
+    transform-style: preserve-3d;
+}
+
+.card-3d:hover {
+    transform: rotateY(5deg) rotateX(5deg);
+}
+
+/* Ripple effect for buttons */
+.btn-ripple {
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-ripple::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 5px;
+    height: 5px;
+    background: rgba(255, 255, 255, 0.5);
+    opacity: 0;
+    border-radius: 100%;
+    transform: scale(1, 1) translate(-50%, -50%);
+    transform-origin: 50% 50%;
+}
+
+.btn-ripple:focus:not(:active)::after {
+    animation: ripple 1s ease-out;
+}
+
+@keyframes ripple {
+    0% {
+        transform: scale(0, 0) translate(-50%, -50%);
+        opacity: 0.5;
+    }
+    100% {
+        transform: scale(100, 100) translate(-50%, -50%);
+        opacity: 0;
+    }
+}
+
+/* Apply staggered animation to video grid */
+#videosGrid {
+    opacity: 1;
+}
+
+#videosGrid.staggered-animation .col {
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+#videosGrid.staggered-animation .col:nth-child(1) { animation: fadeIn 0.5s ease-out 0.1s forwards; }
+#videosGrid.staggered-animation .col:nth-child(2) { animation: fadeIn 0.5s ease-out 0.2s forwards; }
+#videosGrid.staggered-animation .col:nth-child(3) { animation: fadeIn 0.5s ease-out 0.3s forwards; }
+#videosGrid.staggered-animation .col:nth-child(4) { animation: fadeIn 0.5s ease-out 0.4s forwards; }
+#videosGrid.staggered-animation .col:nth-child(5) { animation: fadeIn 0.5s ease-out 0.5s forwards; }
+#videosGrid.staggered-animation .col:nth-child(6) { animation: fadeIn 0.5s ease-out 0.6s forwards; }
+#videosGrid.staggered-animation .col:nth-child(7) { animation: fadeIn 0.5s ease-out 0.7s forwards; }
+#videosGrid.staggered-animation .col:nth-child(8) { animation: fadeIn 0.5s ease-out 0.8s forwards; }
+#videosGrid.staggered-animation .col:nth-child(9) { animation: fadeIn 0.5s ease-out 0.9s forwards; }
+#videosGrid.staggered-animation .col:nth-child(10) { animation: fadeIn 0.5s ease-out 1s forwards; }
