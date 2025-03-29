@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const path = require('path');
@@ -8,8 +9,7 @@ const AutoUpdateService = require('./server/autoUpdateService');
 
 const app = express();
 const PORT = process.env.PORT || 8080;
-require('dotenv').config();
-// console.log(process.env);
+
 
 // YouTube Configuration
 const YOUTUBE_API_KEY = process.env.YOUTUBE_API_KEY;
@@ -56,15 +56,10 @@ app.get("/blog", (req, res) => {
     res.sendFile(path.join(initial_path, "home-blog.html"));
 });
 
-// Add this route before the 404 handler
+
 app.get('/index', (req, res) => {
     res.sendFile(path.join(initial_path, "index.html"));
 });
-
-// Keep your existing routes but add this catch-all
-// app.get('*', (req, res) => {
-//     res.sendFile(path.join(initial_path, "index.html"));
-// });
 
 app.post('/uploads', (req, res) => {
     let file = req.files.image;
@@ -85,7 +80,7 @@ app.get("/admin", (req, res) => {
     res.sendFile(path.join(initial_path, "dashboard.html"));
 });
 
-app.get("/:blog", (req, res) => {
+app.get("/:blog([a-zA-Z0-9-]+)", (req, res) => {
     res.sendFile(path.join(initial_path, "blog.html"));
 });
 
@@ -199,8 +194,17 @@ app.post('/api/settings/update-interval', (req, res) => {
 // ---------------------------
 // Error Handling
 // ---------------------------
-app.use((req, res) => {
-    res.json("404");
+// app.use((req, res) => {
+//     res.json("404");
+// });
+
+app.use((err, req, res, next) => {
+    console.error(`[${new Date().toISOString()}] Error: ${err.message}`);
+    res.status(500).json({ 
+        error: process.env.NODE_ENV === 'production' 
+            ? 'Server error' 
+            : err.message 
+    });
 });
 
 // Initialize server
