@@ -2,9 +2,10 @@
 
 const { google } = require('googleapis');
 const cron = require('node-cron');
+require('dotenv').config();
 
 
-const YOUTUBE_API_KEY = 'AIzaSyBCRUjMQRGVchvZwEounr0FzHhV8cnb29E';
+const YOUTUBE_API_KEY = process.env.YOUTUBE_API_KEY;
 
 class AutoUpdateService {
     constructor(channelStore) {

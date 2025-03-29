@@ -8,9 +8,11 @@ const AutoUpdateService = require('./server/autoUpdateService');
 
 const app = express();
 const PORT = process.env.PORT || 8080;
+require('dotenv').config();
+// console.log(process.env);
 
 // YouTube Configuration
-const YOUTUBE_API_KEY = 'AIzaSyBCRUjMQRGVchvZwEounr0FzHhV8cnb29E';
+const YOUTUBE_API_KEY = process.env.YOUTUBE_API_KEY;
 const youtube = google.youtube({
     version: 'v3',
     key: YOUTUBE_API_KEY
