@@ -2,8 +2,8 @@ const blogSection = document.querySelector('.blogs-section');
 const blogsRow = document.getElementById('blogs-row');
 let allBlogs = []; // Stores all blogs for search functionality
 
-// Initialize and load blogs
-db.collection("blogs").get().then((blogs) => {
+// Initialize and load blogs, sorted by date (newest first)
+db.collection("blogs").orderBy("publishedAt", "desc").get().then((blogs) => {
     blogs.forEach(blog => {
         const blogId = blog.id;
         const blogData = blog.data();

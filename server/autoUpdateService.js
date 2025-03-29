@@ -1,5 +1,3 @@
-
-
 const { google } = require('googleapis');
 const cron = require('node-cron');
 require('dotenv').config();

@@ -38,7 +38,6 @@ const initial_path = path.join(__dirname, "public");
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(express.static(initial_path));
 app.use(fileupload());
 
 // ---------------------------
@@ -56,7 +55,7 @@ app.get("/blog", (req, res) => {
     res.sendFile(path.join(initial_path, "home-blog.html"));
 });
 
-
+app.use(express.static(initial_path));
 app.get('/index', (req, res) => {
     res.sendFile(path.join(initial_path, "index.html"));
 });

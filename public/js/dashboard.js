@@ -37,7 +37,8 @@ const setupLoginButton = () => {
 //fetch user writter blogs
 
 const getUserWrittenBlogs = () => {
-    db.collection("blogs").where("author", "==", auth.currentUser.email.split("@")[0])
+    db.collection("blogs")
+    .where("author", "==", auth.currentUser.email.split("@")[0])
     .get()
     .then((blogs) => {
         blogs.forEach((blog) => {
@@ -45,7 +46,7 @@ const getUserWrittenBlogs = () => {
         })
     })
     .catch((error) => {
-        console.log("Error getting blogs");
+        console.log("Error getting blogs", error);
     })
 }
 
