@@ -1,0 +1,75 @@
+Setup Firebase
+console.firebase.google.com > create a project > unable Google analytics > create a project
+project overview > select web code icon > register app > copy script variable > replace the code on firebase.js
+
+Setup firestore database > create database > start in production mode > enable > Go to Rules > change allow read write to true > publish 
+"Data" tab > start collection > auto id > delete first the file existing. 
+
+Youtube API KEY
+console.cloud.google.com > find and select new project > create >
+select the project > APIs & services > library > enable Youtube Data API v3 > credentials > create credentials > API key
+
+Email subcriptions
+Google sheets > "Name" & "Email"
+Google shhets > Extensions > Apps script > Delete all the contents from Code.gs.
+
+Code.gs > Copy and Paste " var sheetName = 'Sheet1'
+var scriptProp = PropertiesService.getScriptProperties()
+
+function intialSetup () {
+  var activeSpreadsheet = SpreadsheetApp.getActiveSpreadsheet()
+  scriptProp.setProperty('key', activeSpreadsheet.getId())
+}
+
+function doPost (e) {
+  var lock = LockService.getScriptLock()
+  lock.tryLock(10000)
+
+  try {
+    var doc = SpreadsheetApp.openById(scriptProp.getProperty('key'))
+    var sheet = doc.getSheetByName(sheetName)
+
+    var headers = sheet.getRange(1, 1, 1, sheet.getLastColumn()).getValues()[0]
+    var nextRow = sheet.getLastRow() + 1
+
+    var newRow = headers.map(function(header) {
+      return header === 'timestamp' ? new Date() : e.parameter[header]
+    })
+
+    sheet.getRange(nextRow, 1, 1, newRow.length).setValues([newRow])
+
+    return ContentService
+      .createTextOutput(JSON.stringify({ 'result': 'success', 'row': nextRow }))
+      .setMimeType(ContentService.MimeType.JSON)
+  }
+
+  catch (e) {
+    return ContentService
+      .createTextOutput(JSON.stringify({ 'result': 'error', 'error': e }))
+      .setMimeType(ContentService.MimeType.JSON)
+  }
+
+  finally {
+    lock.releaseLock()
+  }
+} " 
+
+> Save Project > Run > After Setup > Rename Project > Deploy > New Deployment > Select type click setting icon > web app > Fill-out and select "Anyone" > Deploy > Copy Web app url code.
+
+Html code:
+
+Name your form <form name = "submit-to-google-sheet"
+
+<script>
+  const scriptURL = 'Paste the Web App Url'
+  const form = document.forms['submit-to-google-sheet']
+
+  form.addEventListener('submit', e => {
+    e.preventDefault()
+    fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+      .then(response => console.log('Success!', response))
+      .catch(error => console.error('Error!', error.message))
+  })
+</script>
+
+Copy and paste this code at the end of body tag
