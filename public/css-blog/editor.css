@@ -1,30 +1,134 @@
+/* Combined theme CSS with blog elements support */
+:root {
+    /* Light Mode Variables - General */
+    --primary-color: #3498db;
+    --secondary-color: #2980b9;
+    --text-color: #333;
+    --bg-color: #f8f9fa;
+    --card-bg: #ffffff;
+    --navbar-bg: #ffffff;
+    --border-color: #dee2e6;
+    --footer-bg: #f1f1f1;
+    --blog-title-color: #333;
+    --blog-overview-color: #555;
+    --btn-text-color: #fff;
+    --btn-bg-color: #3498db;
+    --search-bg: #f1f1f1;
+    --search-text: #333;
+    --banner-overlay: rgba(0, 0, 0, 0.4);
+    --article-text: #333;
+    --article-heading: #222;
+    --article-link: #3498db;
+    --article-blockquote-bg: #f8f9fa;
+    --article-blockquote-border: #3498db;
+    --article-code-bg: #f5f5f5;
+    --article-code-text: #333;
+    --article-image-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    
+    /* Blog-specific variables */
+    /* --banner-bg: #e7e7e7;
+    --title-color: #2d2d2d;
+    --article-color: #2d2d2d;
+    --placeholder-color: #2d2d2d;
+    --scrollbar-thumb: rgba(0, 0, 0, 0.1);
+    --blog-options-bg: #fff;
+    --btn-grey-bg: #a5a5a5;
+    --btn-grey-color: #fff; */
+}
+
+body.dark-mode {
+    /* Dark Mode Variables - General */
+    --primary-color: #4dabf7;
+    --secondary-color: #339af0;
+    --text-color: #e9ecef;
+    --bg-color: #212529;
+    --card-bg: #343a40;
+    --navbar-bg: #343a40;
+    --border-color: #495057;
+    --footer-bg: #343a40;
+    --blog-title-color: #e9ecef;
+    --blog-overview-color: #ced4da;
+    --btn-text-color: #fff;
+    --btn-bg-color: #4dabf7;
+    --search-bg: #495057;
+    --search-text: #e9ecef;
+    --banner-overlay: rgba(0, 0, 0, 0.7);
+    --article-text: #e2e8f0;
+    --article-heading: #f8f9fa;
+    --article-link: #63b3ed;
+    --article-blockquote-bg: #2d3748;
+    --article-blockquote-border: #4dabf7;
+    --article-code-bg: #2d3748;
+    --article-code-text: #e2e8f0;
+    --article-image-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    
+    /* Blog-specific variables */
+    /* --banner-bg: #333333;
+    --title-color: #e9ecef;
+    --article-color: #e9ecef;
+    --placeholder-color: #adb5bd;
+    --scrollbar-thumb: rgba(255, 255, 255, 0.2);
+    --blog-options-bg: #343a40;
+    --btn-grey-bg: #6c757d;
+    --btn-grey-color: #fff; */
+}
+
+/* Base Styles */
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: background-color 0.3s, color 0.3s;
+    /* font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; */
+    line-height: 1.6;
+}
+
+
+
 /*Banner*/
 
-.banner{
+.banner {
     width: 100%;
     height: 400px;
     position: relative;
-    background: #e7e7e7;
+    background: var(--banner-bg);
     background-size: cover;
     background-position: center;
+    transition: background 0.3s ease;
 }
 
-.banner-upload-btn{
+/* .banner::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: var(--banner-overlay);
+    top: 0;
+    left: 0;
+    transition: background 0.3s;
+} */
+
+.banner-upload-btn {
     position: absolute;
     bottom: 20px;
     right: 20px;
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    /* background: rgba(0, 0, 0, 0.1); */
     display: flex;
     justify-content: center;
     align-items: center;
     cursor: pointer;
+    transition: background 0.3s ease;
+    z-index: 1;
 }
 
-.banner-upload-btn img{
+.banner-upload-btn img {
     width: 100px;
+    transition: filter 0.3s ease;
+}
+
+body.dark-mode .banner-upload-btn img {
+    filter: brightness(0.9);
 }
 
 /* Blog Section */
@@ -41,9 +145,10 @@ textarea::-webkit-scrollbar{
     width: 10px;
 }
 
-textarea::-webkit-scrollbar-thumb{
-    background: rgba(0, 0, 0, 0.1);
+textarea::-webkit-scrollbar-thumb {
+    background: var(--scrollbar-thumb);
     border-radius: 10px;
+    transition: background 0.3s ease;
 }
 
 .title,.article{
@@ -53,19 +158,22 @@ textarea::-webkit-scrollbar-thumb{
     outline: none;
     font-size: 50px;
     font-weight: 600;
-    color: #2d2d2d;
+    color: var(--title-color);
     resize: none;
     border: none;
     padding: 10px;
     border-radius: 10px;
+    transition: color 0.3s ease, background-color 0.3s ease;
+    background-color: transparent;
 }
 
 .title::placeholder,
-.article::placeholder{
-    color: #2d2d2d;
+.article::placeholder {
+    color: var(--placeholder-color);
+    transition: color 0.3s ease;
 }
 
-.article{
+.article {
     height: 500px;
     font-size: 20px;
     margin-top: 20px;
@@ -73,33 +181,114 @@ textarea::-webkit-scrollbar-thumb{
     font-weight: 500;
     padding-bottom: 100px;
     white-space: pre-wrap;
+    color: var(--article-color);
 }
 
 /* Blog Options */
-.blog-options{
+.blog-options {
     position: fixed;
     bottom: 0;
     left: 0;
     width: 100%;
     height: 60px;
-    background: #fff;
+    background: var(--blog-options-bg);
     z-index: 9;
     display: flex;
     justify-content: center;
     align-items: center;
-
+    transition: background 0.3s ease;
 }
 
-.btn{
+.btn {
     border: none;
     outline: none;
     cursor: pointer;
-    /* align-items: center; */
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .btn.grey{
-    background: #a5a5a5;
-    color: #fff;
+    background: var(--btn-grey-bg);
+    color: var(--btn-grey-color);
     margin-left: 20px;
     font-size: 14px;
+}
+.btn:hover {
+    background-color: var(--secondary-color);
+}
+
+/* Additional dark mode specific adjustments */
+body.dark-mode
+{
+    box-shadow: none;
+    background-color: black ;
+    /* color: var(--text-color); */
+}
+
+body.dark-mode p {
+    color: white;
+}
+
+body.dark-mode h1 {
+    color: white;
+}
+
+body.dark-mode .blog a{
+    color: white;
+}
+
+
+/* Theme Switch Styles */
+.theme-switch-wrapper {
+    display: flex;
+    align-items: center;
+    margin-left: 15px;
+}
+
+.theme-switch {
+    display: inline-block;
+    height: 24px;
+    position: relative;
+    width: 48px;
+}
+
+.theme-switch input {
+    display: none;
+}
+
+.slider {
+    background-color: #ccc;
+    bottom: 0;
+    cursor: pointer;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transition: .4s;
+    border-radius: 34px;
+}
+
+.slider:before {
+    background-color: white;
+    bottom: 4px;
+    content: "";
+    height: 16px;
+    left: 4px;
+    position: absolute;
+    transition: .4s;
+    width: 16px;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: var(--primary-color);
+}
+
+input:checked + .slider:before {
+    transform: translateX(24px);
+}
+
+.theme-icon {
+    margin: 0 5px;
+    color: var(--text-color);
+    transition: color 0.3s;
 }
