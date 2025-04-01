@@ -1,12 +1,12 @@
 let blogId = decodeURI(location.pathname.split("/").pop());
 let docRef = db.collection("blogs").doc(blogId);
 
-// Theme initialization
+
 document.addEventListener('DOMContentLoaded', function() {
     initializeTheme();
 });
 
-// Initialize theme based on user preference or system preference
+
 function initializeTheme() {
     const currentTheme = localStorage.getItem('theme') || 
                         (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
@@ -19,7 +19,7 @@ function initializeTheme() {
         document.getElementById('theme-toggle').checked = false;
     }
     
-    // Add event listener for theme toggle
+  
     document.getElementById('theme-toggle').addEventListener('change', function(e) {
         if (e.target.checked) {
             document.body.classList.add('dark-mode');
@@ -33,9 +33,9 @@ function initializeTheme() {
     });
 }
 
-// Apply theme-specific enhancements to content
+
 function applyThemeToContent(theme) {
-    // Add animation to content elements when theme changes
+ 
     const contentElements = document.querySelectorAll('.blog-card, .article p, .article h1, .article h2, .article h3, .article h4, .article h5, .article h6');
     contentElements.forEach(element => {
         element.classList.add('theme-transition');
@@ -44,7 +44,7 @@ function applyThemeToContent(theme) {
         }, 500);
     });
     
-    // Adjust image brightness for dark mode
+ 
     const images = document.querySelectorAll('.article-image, .blog-image');
     if (theme === 'dark') {
         images.forEach(img => {
@@ -56,7 +56,7 @@ function applyThemeToContent(theme) {
         });
     }
 }
-//=========================================
+
 
 docRef.get().then((doc) => {
     if(doc.exists){
@@ -92,17 +92,17 @@ const setupBlog = (data) => {
     const article = document.querySelector('.article');
     addArticle(article, data.article);
 
-    // Apply current theme to newly loaded content
+
     const currentTheme = document.body.classList.contains('dark-mode') ? 'dark' : 'light';
     applyThemeToContent(currentTheme);
 }
 
 const addArticle = (ele, data) => {
     data = data.split("\n").filter(item => item.length);
-    // console.log(data);
+
 
     data.forEach(item => {
-        //check for heading
+       
         if(item[0] == '#'){
             let hCount = 0;
             let i = 0;

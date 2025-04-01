@@ -1,8 +1,8 @@
-require('dotenv').config();
+require('dotenv').config();// Load environment variables
 const express = require('express');
-const cors = require('cors');
+const cors = require('cors');// Enable CORS
 const path = require('path');
-const fileupload = require('express-fileupload');
+const fileupload = require('express-fileupload');// For image uploads
 const { google } = require('googleapis');
 const axios = require('axios');
 const AutoUpdateService = require('./server/autoUpdateService');
@@ -11,38 +11,36 @@ const app = express();
 const PORT = process.env.PORT || 8080;
 
 
-// YouTube Configuration
+
 const YOUTUBE_API_KEY = process.env.YOUTUBE_API_KEY;
 const youtube = google.youtube({
     version: 'v3',
     key: YOUTUBE_API_KEY
 });
 
-// Channel Store
+
 const channelStore = {
     channels: [
         { id: 'UCPYFnNXs42dDQ5eu29rmu8g', name: 'Send The Light Ministries - Proper Inc.', thumbnail: '' }
-    ],
-    videos: [],
-    lastUpdated: null
+    ], // Stores channel metadata
+    videos: [], // Aggregated videos from all channels
+    lastUpdated: null // Timestamp of last update
 };
 
 
 
-// Initialize services
+// Initialization
 const updateService = new AutoUpdateService(channelStore).init();
 const initial_path = path.join(__dirname, "public");
 
 
-// Middleware
+
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(fileupload());
 
-// ---------------------------
-// Original Blog Routes
-// ---------------------------
+
 app.get('/', (req, res) => {
     res.sendFile(path.join(initial_path, "home.html"));
 });
@@ -87,14 +85,12 @@ app.get("/:blog/editor", (req, res) => {
     res.sendFile(path.join(initial_path, "editor.html"));
 });
 
-// ---------------------------
-// New YouTube API Routes
-// ---------------------------
-app.get('/api/channels', (req, res) => {
+
+app.get('/api/channels', (req, res) => { //List all tracked channels
     res.json(channelStore.channels);
 });
 
-app.get('/api/videos', (req, res) => {
+app.get('/api/videos', (req, res) => { //Get filtered/sorted videos
     const { channelIds } = req.query;
     let filteredVideos = channelStore.videos;
 
@@ -115,12 +111,13 @@ app.get('/api/videos', (req, res) => {
     });
 });
 
-app.get('/api/check-updates', (req, res) => {
+app.get('/api/check-updates', (req, res) => { //Check for new videos
     const { lastCheck } = req.query;
     const hasNewVideos = updateService.hasNewVideosSince(lastCheck);
     res.json({ hasNewVideos, lastUpdated: channelStore.lastUpdated });
 });
 
+// Force update endpoint
 app.post('/api/force-update', async (req, res) => {
     try {
         await updateService.forceUpdate();
@@ -131,11 +128,12 @@ app.post('/api/force-update', async (req, res) => {
     }
 });
 
-app.post('/api/channels', async (req, res) => {
+app.post('/api/channels', async (req, res) => { //Add new YouTube channel
     try {
         const { channelId } = req.body;
         const existingChannel = channelStore.channels.find(c => c.id === channelId);
-        
+
+        // In POST /api/channels
         if (existingChannel) {
             return res.status(400).json({ error: 'Channel already exists' });
         }
@@ -173,7 +171,7 @@ app.delete('/api/channels/:channelId', (req, res) => {
     res.json({ success: true });
 });
 
-app.post('/api/settings/update-interval', (req, res) => {
+app.post('/api/settings/update-interval', (req, res) => { //Configure sync frequency
     const { interval } = req.body;
     if (!interval || typeof interval !== 'string') {
         return res.status(400).json({ error: 'Invalid interval format' });
@@ -190,12 +188,6 @@ app.post('/api/settings/update-interval', (req, res) => {
 
 
 
-// ---------------------------
-// Error Handling
-// ---------------------------
-// app.use((req, res) => {
-//     res.json("404");
-// });
 
 app.use((err, req, res, next) => {
     console.error(`[${new Date().toISOString()}] Error: ${err.message}`);
@@ -206,9 +198,15 @@ app.use((err, req, res, next) => {
     });
 });
 
-// Initialize server
-app.listen(PORT, '0.0.0.0', () => {
+
+app.listen(PORT, '0.0.0.0', () => { // Listen on all interfaces
     console.log(`Server running on port ${PORT}`);
     console.log(`YouTube API initialized for Targetoir Twenty-three`);
     updateService.fetchAllVideos();
 });
+
+// Diagram
+// Client → Express Server → YouTube API  
+//        ↳ AutoUpdateService (CRON)  
+//        ↳ ChannelStore (In-Memory)  
+//        ↳ File Uploads (Local Storage)

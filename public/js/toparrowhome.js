@@ -1,4 +1,4 @@
-// Back to top button
+
 const backToTop = document.querySelector('.back-to-top');
 if (backToTop) {
     const toggleBacktotop = () => {

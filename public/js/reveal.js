@@ -1,10 +1,10 @@
-// Reveal Effects JavaScript - Optimized Version
+
 document.addEventListener('DOMContentLoaded', function() {
-    // Cache DOM elements and viewport height for better performance
+    
     const revealElements = document.querySelectorAll('.reveal, .reveal-fade, .reveal-slide-left, .reveal-slide-right, .reveal-zoom');
     let windowHeight = window.innerHeight;
     
-    // Function to check if element is in viewport with throttling
+    
     function isInViewport(element) {
         const rect = element.getBoundingClientRect();
         return (
@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function() {
         );
     }
 
-    // Throttle function to limit execution frequency
+    
     function throttle(func, delay) {
         let lastCall = 0;
         return function(...args) {
@@ -26,9 +26,9 @@ document.addEventListener('DOMContentLoaded', function() {
         };
     }
 
-    // Function to handle reveal animations
+    
     const revealTargets = document.querySelectorAll('.reveal, .reveal-fade, .reveal-slide-left, .reveal-slide-right, .reveal-zoom');
-    // ...
+    
     function revealCheck() {
         windowHeight = window.innerHeight;
         for (let i = 0; i < revealTargets.length; i++) {
