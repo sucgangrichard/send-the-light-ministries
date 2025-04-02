@@ -280,6 +280,8 @@ nav ul li a:hover:after {
         word-break: break-all;
 
     }
+
+    
     
     .blogs-section .btn-read {
         display: inline-block;
@@ -294,12 +296,18 @@ nav ul li a:hover:after {
       background: var(--white-color);
     }
 
+    .article-content .btn-read{
+        background: rgb(38, 160, 38) ;
+        color: var(--white-color);
+    }
+
     /* EditButton */
     .blogs-section .btn-edit {
         display: inline-block;
         padding: 8px 20px;
-        background: rgb(0, 178, 21);
+        background: lightblue;
         color: var(--white-color);
+        /* outline: 5px dotted green; */
         border-radius: 50px;
         transition: 0.3s;
     }
@@ -311,7 +319,7 @@ nav ul li a:hover:after {
     .blogs-section .btn-delete {
         display: inline-block;
         padding: 8px 20px;
-        background: rgb(255, 26, 26);
+        background: rgba(255, 0, 0, 0.384);
         color: var(--white-color);
         border-radius: 50px;
         transition: 0.3s;
@@ -319,14 +327,15 @@ nav ul li a:hover:after {
     }
     
     .blogs-section .btn-delete:hover {
-      background: var(--white-color);
+      color: green;
+      background-color: white;
     }
 
     
     
   
     .blogs-section a {
-      color: var(--primary-color);
+      color: rgb(38, 160, 38);
       text-decoration: none;
       transition: 0.3s;
     }
@@ -391,9 +400,76 @@ nav ul li a:hover:after {
         letter-spacing: 2px;
         color: #6366f1;
     }
-
-    .hero-btn {
-        background: #6366f1;
+    /* <!-- HTML !--> */
+    /* <button class="button-57" role="button"><span class="text">Button 57</span><span>Alternate text</span></button> */
+    
+    /* CSS */
+    .button-57 {
+        
+      position: relative;
+      overflow: hidden;
+      border: 1px solid #18181a;
+      color: white;
+      display: inline-block;
+      font-size: 15px;
+      line-height: 15px;
+      padding: 18px 18px 17px;
+      text-decoration: none;
+      cursor: pointer;
+      background: rgb(38, 160, 38);
+      user-select: none;
+      -webkit-user-select: none;
+      touch-action: manipulation;
+      border-radius: 30px;
+    }
+    
+    .button-57 span:first-child {
+      position: relative;
+      transition: color 600ms cubic-bezier(0.48, 0, 0.12, 1);
+      z-index: 10;
+    }
+    
+    .button-57 span:last-child {
+      color: white;
+      display: block;
+      position: absolute;
+      bottom: 0;
+      transition: all 500ms cubic-bezier(0.48, 0, 0.12, 1);
+      z-index: 100;
+      opacity: 0;
+      top: 50%;
+      left: 50%;
+      transform: translateY(225%) translateX(-50%);
+      height: 14px;
+      line-height: 13px;
+    }
+    
+    .button-57:after {
+      content: "";
+      position: absolute;
+      bottom: -50%;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgb(38, 160, 38);
+      transform-origin: bottom center;
+      transition: transform 600ms cubic-bezier(0.48, 0, 0.12, 1);
+      transform: skewY(9.3deg) scaleY(0);
+      z-index: 50;
+    }
+    
+    .button-57:hover:after {
+      transform-origin: bottom center;
+      transform: skewY(9.3deg) scaleY(2);
+    }
+    
+    .button-57:hover span:last-child {
+      transform: translateX(-50%) translateY(-100%);
+      opacity: 1;
+      transition: all 900ms cubic-bezier(0.48, 0, 0.12, 1);
+    } 
+    /* .hero-btn {
+        background: lightgreen;
         color: white;   
         padding: 12px 30px;
         border-radius: 30px;
@@ -403,11 +479,139 @@ nav ul li a:hover:after {
     .hero-btn:hover {
         transform: translateY(-2px);
         box-shadow: 0 5px 15px rgba(99, 102, 241, 0.3);
-    }
+    } */
 
     .ratio img {
         object-fit: cover;
         width: 100%;
         height: 100%;
     }
+
+    /* Keyframes for animations */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  
+  @keyframes slideInRight {
+    from {
+      opacity: 0;
+      transform: translateX(100px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(50px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes reveal {
+    from {
+      clip-path: inset(0 100% 0 0);
+    }
+    to {
+      clip-path: inset(0 0 0 0);
+    }
+  }
+  
+  /* Global Transitions */
+  .hero-section * {
+    transition: all 0.3s ease;
+  }
+  
+  /* Hero Section Animations */
+  .hero-section .featured-badge {
+    opacity: 0;
+    animation: fadeIn 1s ease forwards;
+  }
+  
+  .hero-section h1 {
+    opacity: 0;
+    animation: fadeIn 1s ease 0.5s forwards;
+  }
+  
+  .hero-section .lead {
+    opacity: 0;
+    animation: fadeIn 1s ease 1s forwards;
+  }
+  
+  .hero-btn {
+    opacity: 0;
+    animation: fadeIn 1s ease 1.5s forwards;
+  }
+  
+  .hero-section img {
+    opacity: 0;
+    animation: slideInRight 1s ease forwards;
+    animation-delay: 0.8s;
+  }
+  
+  /* Button Hover Effect */
+  /* .button-57 {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .button-57 span:last-child {
+    transform: translateY(100%);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .button-57:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+  }
+  
+  .button-57:hover span:first-child {
+    transform: translateY(-100%);
+  }
+  
+  .button-57:hover span:last-child {
+    transform: translateY(0);
+  } */
+  
+  /* Image Hover Effect */
+  .hero-section .ratio:hover img {
+    transform: scale(1.03);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+  }
+  
+  /* Scroll Reveal Animation */
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 1s ease;
+  }
+  
+  .reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  /* Footer Animation */
+  #footer {
+    opacity: 0;
+    animation: fadeInUp 1s ease 2s forwards;
+  }
+  
+  /* Additional Interactive Effects */
+  .featured-badge:hover {
+    transform: translateY(-3px);
+    text-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  }
+  
+  .lead:hover {
+    transform: translateX(10px);
+  }
 

@@ -85,8 +85,8 @@
   }
   
   #hero .btn-read-more {
-    background: var(--primary-color);
-    border: 2px solid var(--primary-color);
+    background: orange;
+    border: 2px solid orange;
   }
   
   #hero .btn-read-more:hover {

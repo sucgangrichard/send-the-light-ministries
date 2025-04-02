@@ -77,7 +77,7 @@ const setupBlog = (data) => {
 
     titleTag.innerHTML += blogTitle.innerHTML = data.title;
     publish.innerHTML += data.publishedAt;
-    publish.innerHTML += ` -- ${data.author}`;
+    publish.innerHTML += ` • ${data.author}`;
 
     try{
         if(data.author == auth.currentUser.email.split("@")[0]){
@@ -129,7 +129,10 @@ const addArticle = (ele, data) => {
         
         else{
             ele.innerHTML += `<p class="theme-aware-text">${item}</p>`;
+            // ele.innerHTML += `<hr>`;
         }
+        // ele.innerHTML += `<br>`;
     })
+    ele.innerHTML += `<br>`;
 }
 

@@ -103,7 +103,7 @@
   .videos .btn-explore {
     display: inline-block;
     padding: 10px 30px;
-    background: var(--primary-color);
+    background: orange;
     color: var(--white-color);
     border-radius: 50px;
     transition: 0.3s;

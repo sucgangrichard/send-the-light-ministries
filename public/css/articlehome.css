@@ -88,7 +88,7 @@
   .articles .btn-read {
     display: inline-block;
     padding: 8px 20px;
-    background: var(--primary-color);
+    background: rgb(38, 160, 38);
     color: var(--white-color);
     border-radius: 50px;
     transition: 0.3s;
@@ -104,7 +104,7 @@
   .articles .btn-explore {
     display: inline-block;
     padding: 10px 30px;
-    background: var(--primary-color);
+    background: orange;
     color: var(--white-color);
     border-radius: 50px;
     transition: 0.3s;
