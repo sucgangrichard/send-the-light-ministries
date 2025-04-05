@@ -1,8 +1,8 @@
 const blogSection = document.querySelector('.blogs-section');
 const blogsRow = document.getElementById('blogs-row');
-let allBlogs = []; 
+let allBlogs = []; // Stores all blogs for search functionality
 
-
+// Initialize and load blogs, sorted by date (newest first)
 db.collection("blogs").orderBy("publishedAt", "desc").get().then((blogs) => {
     blogs.forEach(blog => {
         const blogId = blog.id;
@@ -15,7 +15,7 @@ db.collection("blogs").orderBy("publishedAt", "desc").get().then((blogs) => {
     });
 });
 
-
+// Modified createBlog function
 const createBlog = (id, data) => {
     const cleanedOverview = data.article
         .replace(/!\[.*?\]\(.*?\)/g, '')
@@ -42,21 +42,21 @@ const createBlog = (id, data) => {
     blogsRow.appendChild(blogCol);
 };
 
-
+// Search functionality - works with both Enter key and button click
 const searchInput = document.getElementById('searchInput');
 const searchButton = document.getElementById('searchButton');
 
-
+// Handle search input
 searchInput.addEventListener('input', function(e) {
     performSearch(e.target.value);
 });
 
-
+// Handle search button click
 searchButton.addEventListener('click', () => {
     performSearch(searchInput.value);
 });
 
-
+// Handle Enter key in search input
 searchInput.addEventListener('keypress', (e) => {
     if (e.key === 'Enter') {
         performSearch(searchInput.value);
@@ -69,7 +69,7 @@ function performSearch(searchTerm) {
 }
 
 function filterBlogs(searchTerm) {
-    blogsRow.innerHTML = ''; 
+    blogsRow.innerHTML = ''; // Clear current results
 
     const filteredBlogs = allBlogs.filter(blog => {
         const titleMatch = blog.data.title.toLowerCase().includes(searchTerm);

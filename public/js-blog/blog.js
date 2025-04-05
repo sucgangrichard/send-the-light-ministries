@@ -63,12 +63,18 @@ const addArticle = (ele, data) => {
             let src = item.slice(seperator + 2, item.length - 1);
             ele.innerHTML += `
             <img src = "${src}" alt = "${alt}" class="article-image">`;
+            
 
         }
+        
         
         else{
             ele.innerHTML += `<p>${item}</p>`;
         }
+        // ele.innerHTML += `<br>`;
     })
+    // ele.innerHTML += `<br>`;
+    
 }
+
 

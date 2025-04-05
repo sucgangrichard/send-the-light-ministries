@@ -14,7 +14,7 @@ class AutoUpdateService {
         });
         this.isRunning = false;
         this.lastUpdateTime = null;
-        this.updateInterval = '0 * * * *'; // Adjust update frequency
+        this.updateInterval = '0 * * * *'; 
         this.scheduledJob = null;
     }
 

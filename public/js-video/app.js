@@ -1,18 +1,18 @@
+// YouTube Feed App - Frontend JavaScript
 
-
-
+// Configuration
 const config = {
-    refreshInterval: 30000, // 30s auto-refresh
-    maxVideosPerChannel: Infinity,  
-    defaultView: 'grid', // Initial layout    
-    apiBaseUrl: '/api' // API endpoint       
+    refreshInterval: 30000, // Interval to check for new videos (ms)
+    maxVideosPerChannel: Infinity,  // Maximum number of videos to display per channel
+    defaultView: 'grid',     // Default view mode: 'grid' or 'list'
+    apiBaseUrl: '/api'       // Base URL for API endpoints
 };
 
-
+// State management
 const state = {
     channels: [],
     videos: [],
-    selectedChannels: [], 
+    selectedChannels: [], // Will store IDs of selected channels
     viewMode: config.defaultView,
     lastUpdated: null,
     isLoading: true,
@@ -20,7 +20,7 @@ const state = {
     searchQuery: ''
 };
 
-
+// DOM Elements
 const elements = {
     channelList: document.getElementById('channelList'),
     videosGrid: document.getElementById('videosGrid'),
@@ -40,24 +40,24 @@ const elements = {
     searchButton: document.getElementById('searchButton')
 };
 
-
+// Initialize the application
 function init() {
-    
+    // Load channels from API
     loadChannels()
         .then(() => {
-            
+            // Populate channel dropdown
             populateChannelDropdown();
 
-            
+            // Set initial view mode
             setViewMode(state.viewMode);
 
-            
+            // Add event listeners
             addEventListeners();
 
-            
+            // Load initial videos
             loadVideos();
 
-            
+            // Set up auto-refresh
             setupAutoRefresh();
         })
         .catch(error => {
@@ -68,7 +68,7 @@ function init() {
         });
 }
 
-
+// Load channels from API
 async function loadChannels() {
     try {
         const response = await fetch(`${config.apiBaseUrl}/channels`);
@@ -79,7 +79,7 @@ async function loadChannels() {
         const channels = await response.json();
         state.channels = channels;
 
-        
+        // By default, select all channels
         state.selectedChannels = channels.map(channel => channel.id);
 
         return channels;
@@ -89,12 +89,12 @@ async function loadChannels() {
     }
 }
 
-
+// Populate channel dropdown with available channels
 function populateChannelDropdown() {
-    
+    // Clear existing items
     elements.channelList.innerHTML = '';
 
-    
+    // Add "Select All" option
     const selectAllItem = document.createElement('li');
     const selectAllLink = document.createElement('a');
     selectAllLink.className = 'dropdown-item channel-select-all';
@@ -103,12 +103,12 @@ function populateChannelDropdown() {
     selectAllItem.appendChild(selectAllLink);
     elements.channelList.appendChild(selectAllItem);
 
-    
+    // Add divider
     const divider = document.createElement('li');
     divider.innerHTML = '<hr class="dropdown-divider">';
     elements.channelList.appendChild(divider);
 
-    
+    // Add individual channels
     state.channels.forEach(channel => {
         const li = document.createElement('li');
         const a = document.createElement('a');
@@ -116,7 +116,7 @@ function populateChannelDropdown() {
         a.href = '#';
         a.dataset.channelId = channel.id;
 
-        
+        // Create channel item with thumbnail and name
         a.innerHTML = `
             <div class="form-check">
                 <input class="form-check-input channel-checkbox" type="checkbox" value="${channel.id}" id="channel-${channel.id}">
@@ -130,38 +130,38 @@ function populateChannelDropdown() {
         elements.channelList.appendChild(li);
     });
 
-    
+    // By default, select all channels
     const checkboxes = document.querySelectorAll('.channel-checkbox');
     checkboxes.forEach(checkbox => {
         checkbox.checked = true;
     });
 }
 
-
+// Add event listeners to interactive elements
 function addEventListeners() {
-    
+    // View mode toggle
     elements.gridViewBtn.addEventListener('click', () => setViewMode('grid'));
     elements.listViewBtn.addEventListener('click', () => setViewMode('list'));
 
-    
+    // Channel selection
     document.querySelectorAll('.channel-item').forEach(item => {
         item.addEventListener('click', (e) => {
             e.preventDefault();
             const checkbox = item.querySelector('.channel-checkbox');
             checkbox.checked = !checkbox.checked;
 
-            
+            // Update selected channels
             updateSelectedChannels();
 
-            
+            // Reload videos
             loadVideos();
 
-            
+            // Prevent dropdown from closing
             e.stopPropagation();
         });
     });
 
-    
+    // Select all channels
     document.querySelector('.channel-select-all').addEventListener('click', (e) => {
         e.preventDefault();
         const checkboxes = document.querySelectorAll('.channel-checkbox');
@@ -171,17 +171,17 @@ function addEventListeners() {
             checkbox.checked = !allChecked;
         });
 
-        
+        // Update selected channels
         updateSelectedChannels();
 
-        
+        // Reload videos
         loadVideos();
 
-        
+        // Prevent dropdown from closing
         e.stopPropagation();
     });
 
-    
+    // Video modal
     document.addEventListener('click', (e) => {
         const videoCard = e.target.closest('.video-card, .video-list-item');
         if (videoCard) {
@@ -191,12 +191,12 @@ function addEventListeners() {
         }
     });
 
-    
+    // Close modal and stop video
     elements.videoModal.addEventListener('hidden.bs.modal', () => {
         elements.videoIframe.src = '';
     });
 
-    
+    // Search functionality
     elements.searchInput.addEventListener('input', (e) => {
         state.searchQuery = e.target.value.trim();
         renderVideos();
@@ -208,7 +208,7 @@ function addEventListeners() {
     });
 }
 
-
+// Update the list of selected channels based on checkboxes
 function updateSelectedChannels() {
     state.selectedChannels = [];
     document.querySelectorAll('.channel-checkbox:checked').forEach(checkbox => {
@@ -216,7 +216,7 @@ function updateSelectedChannels() {
     });
 }
 
-
+// Set the view mode (grid or list)
 function setViewMode(mode) {
     state.viewMode = mode;
 
@@ -232,25 +232,25 @@ function setViewMode(mode) {
         elements.listViewBtn.classList.add('active');
     }
 
-    
+    // Render videos in the new view mode
     renderVideos();
 }
 
-
+// Load videos from the API
 async function loadVideos() {
-    
+    // Show loading spinner
     elements.loadingSpinner.classList.remove('d-none');
     elements.errorMessage.classList.add('d-none');
     state.isLoading = true;
     state.hasError = false;
 
     try {
-        
+        // Build query string with selected channel IDs
         const queryParams = state.selectedChannels.length > 0
             ? `?channelIds=${state.selectedChannels.join(',')}`
             : '';
 
-        
+        // Fetch videos from API
         const response = await fetch(`${config.apiBaseUrl}/videos${queryParams}`);
 
         if (!response.ok) {
@@ -263,30 +263,30 @@ async function loadVideos() {
         state.lastUpdated = new Date(data.lastUpdated);
         state.isLoading = false;
 
-        
+        // Render videos
         renderVideos();
 
-        
+        // Hide loading spinner
         elements.loadingSpinner.classList.add('d-none');
     } catch (error) {
         console.error('Error loading videos:', error);
         state.isLoading = false;
         state.hasError = true;
 
-        
+        // Show error message
         elements.loadingSpinner.classList.add('d-none');
         elements.errorMessage.classList.remove('d-none');
     }
 }
 
-
+// Render videos in the current view mode
 function renderVideos() {
     if (state.isLoading) return;
     if (state.hasError) return;
 
     const filteredVideos = getFilteredVideos();
 
-    
+    // Update empty state condition
     if (filteredVideos.length === 0 || state.selectedChannels.length === 0) {
         renderEmptyState();
         return;
@@ -299,7 +299,7 @@ function renderVideos() {
     }
 }
 
-
+// Render empty state when no videos are available
 function renderEmptyState() {
     let title, message;
 
@@ -328,7 +328,7 @@ function renderEmptyState() {
     elements.videosList.innerHTML = '';
 }
 
-
+// Render videos in grid view
 function renderGridView(videos) {
     elements.videosGrid.innerHTML = '';
     videos.forEach(video => {
@@ -355,7 +355,7 @@ function renderGridView(videos) {
     });
 }
 
-
+// Render videos in list view
 function renderListView(videos) {
     elements.videosList.innerHTML = '';
     const listGroup = document.createElement('div');
@@ -388,13 +388,13 @@ function renderListView(videos) {
     elements.videosList.appendChild(listGroup);
 }
 
-
+// Open video modal with video details
 function openVideoModal(videoId) {
     const video = state.videos.find(v => v.id === videoId);
 
     if (!video) return;
 
-    
+    // Set modal content
     elements.videoModalTitle.textContent = video.title;
     elements.videoIframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
     elements.videoChannel.textContent = video.channelTitle;
@@ -402,20 +402,20 @@ function openVideoModal(videoId) {
     elements.videoPublished.textContent = `Published on ${formatDate(video.publishedAt, true)}`;
     elements.videoLink.href = `https://www.youtube.com/watch?v=${videoId}`;
 
-    
+    // Show modal
     const videoModal = new bootstrap.Modal(elements.videoModal);
     videoModal.show();
 }
 
-
+// Set up auto-refresh mechanism
 function setupAutoRefresh() {
     setInterval(() => {
-        
+        // Check for new videos
         checkForNewVideos();
     }, config.refreshInterval);
 }
 
-
+// Check for new videos and notify if there are updates
 async function checkForNewVideos() {
     try {
         const response = await fetch(`${config.apiBaseUrl}/check-updates`);
@@ -427,7 +427,7 @@ async function checkForNewVideos() {
         const data = await response.json();
 
         if (data.hasNewVideos) {
-            
+            // Show notification
             showUpdateNotification();
         }
     } catch (error) {
@@ -435,15 +435,15 @@ async function checkForNewVideos() {
     }
 }
 
-
+// Show notification when new videos are available
 function showUpdateNotification() {
-    
+    // Remove existing notification if any
     const existingNotification = document.querySelector('.update-notification');
     if (existingNotification) {
         existingNotification.remove();
     }
 
-    
+    // Create notification element
     const notification = document.createElement('div');
     notification.className = 'update-notification';
     notification.innerHTML = `
@@ -451,19 +451,19 @@ function showUpdateNotification() {
         <button class="btn btn-sm btn-light ms-2 refresh-btn">Refresh</button>
     `;
 
-    
+    // Add to body
     document.body.appendChild(notification);
 
-    
+    // Add event listener to refresh button
     notification.querySelector('.refresh-btn').addEventListener('click', () => {
-        
+        // Remove notification
         notification.remove();
 
-        
+        // Reload videos
         loadVideos();
     });
 
-    
+    // In function showUpdateNotification, replace the setTimeout block with:
     setTimeout(() => {
         if (notification.parentNode) {
             notification.remove();
@@ -471,12 +471,12 @@ function showUpdateNotification() {
     }, 10000);
 }
 
-
+// Format date to relative time (e.g., "2 days ago")
 function formatDate(dateString, full = false) {
     const date = new Date(dateString);
 
     if (full) {
-        
+        // Full date format: "January 1, 2023"
         return date.toLocaleDateString('en-US', {
             year: 'numeric',
             month: 'long',
@@ -511,7 +511,7 @@ function formatDate(dateString, full = false) {
 function getFilteredVideos() {
     let filtered = state.videos;
 
-   
+    // Apply search filter
     if (state.searchQuery) {
         const query = state.searchQuery.toLowerCase();
         filtered = filtered.filter(video => {

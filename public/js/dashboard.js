@@ -1,20 +1,16 @@
-let allBlogs = []; 
-const searchInput = document.getElementById('searchInput');
-const searchButton = document.getElementById('searchButton');
-
 let ui = new firebaseui.auth.AuthUI(auth);
-let login = document.querySelector('.login');
+let login = document.querySelector('.login');//.nav-login
 const blogSection = document.querySelector('.blogs-section');
 
-const blogsRow = document.getElementById('blogs-row');
+const blogsRow = document.getElementById('blogs-row');//
 
-
+//check login user or not
 auth.onAuthStateChanged((user) => {
-    if (user) {
+    if(user){
         login.style.display = "none";
         getUserWrittenBlogs();
-    } else {
-
+    }else{
+        // login.style.display = "none";
         setupLoginButton();
     }
 })
@@ -22,72 +18,55 @@ auth.onAuthStateChanged((user) => {
 
 const setupLoginButton = () => {
     ui.start("#loginUI", {
-        callbacks: {
-            signInSuccessWithAuthResult: function (authResult, redirectUrl) {
-                login.style.display = "none";
-                window.location.reload();
+            callbacks: {
+                signInSuccessWithAuthResult: function(authResult, redirectUrl) {
+                    login.style.display = "none";
+                    window.location.reload();
 
-                return false;
-            }
+                    return false;
+                }
 
+ 
+            },
 
-        },
-
-        signInFlow: 'popup',
-        signInOptions: [firebase.auth.GoogleAuthProvider.PROVIDER_ID]
+            signInFlow: 'popup',
+            signInOptions: [firebase.auth.GoogleAuthProvider.PROVIDER_ID]
     })
 }
 
+//fetch user writter blogs
 
 const getUserWrittenBlogs = () => {
     db.collection("blogs")
     .where("author", "==", auth.currentUser.email.split("@")[0])
     .get()
     .then((blogs) => {
-        allBlogs = [];
         blogs.forEach((blog) => {
-            allBlogs.push(blog);
-        });
-        renderBlogs(allBlogs); 
+            createBlog(blog);
+        })
     })
     .catch((error) => {
         console.log("Error getting blogs", error);
-    });
-}
-const renderBlogs = (blogsArray) => {
-    blogsRow.innerHTML = ''; 
-    blogsArray.forEach(blog => {
-        createBlog(blog);
-    });
+    })
 }
 
-const handleSearch = () => {
-    const searchTerm = searchInput.value.toLowerCase().trim();
-    const filteredBlogs = allBlogs.filter(blog => {
-        const data = blog.data();
-        const title = data.title.toLowerCase();
-        const content = stripHtmlAndMarkdown(data.article).toLowerCase();
-        return title.includes(searchTerm) || content.includes(searchTerm);
-    });
-    renderBlogs(filteredBlogs);
-}
-
+// Add this helper function to strip HTML and Markdown
 function stripHtmlAndMarkdown(html) {
+    // Handle common markdown patterns
+    let text = html.replace(/#+\s?/g, ''); // Remove headings (# ## ### etc)
+   
+    text = text.replace(/!\[([^\]]+)\]\([^)]+\)/g, ''); // Remove image syntax
 
-    let text = html.replace(/#+\s?/g, '');
-
-    text = text.replace(/!\[([^\]]+)\]\([^)]+\)/g, '');
-
-
-
+    
+    // Strip any HTML tags
     const tempDiv = document.createElement('div');
     tempDiv.innerHTML = text;
     return tempDiv.textContent || tempDiv.innerText || '';
-}
-
+  }
+  
 
 const createBlog = (blog) => {
-
+   
     let data = blog.data();
     const blogCard = document.createElement('div');
     blogCard.className = 'col-lg-4 col-md-6 mb-4';
@@ -99,8 +78,8 @@ const createBlog = (blog) => {
         <div class="article-content">
             <p class="article-date">${data.publishedAt}</p>
             <h3 class="blog-title h5">${data.title.length > 100
-            ? data.title.substring(0, 100) + '...'
-            : data.title}</h3>
+                ? data.title.substring(0, 100) + '...'
+                : data.title}</h3>
             <p class="blog-overview flex-grow-1">${stripHtmlAndMarkdown(data.article).substring(0, 200) + '...'}</p>
             <div class="btn-group mt-3">
                 <a href="/${blog.id}" class="btn-read">Read</a>
@@ -109,22 +88,17 @@ const createBlog = (blog) => {
             </div>
         </div>
     </div>
-    
     `;
-
+    // <a href="/editor?id=${blog.id}" class="btn-edit">Edit</a>
     blogsRow.appendChild(blogCard);
 }
 
-const deleteBlog = (id) => {
+const deleteBlog = (id) =>{
     db.collection("blogs").doc(id).delete().then(() => {
-      
-        allBlogs = allBlogs.filter(blog => blog.id !== id);
-        renderBlogs(allBlogs);
-    }).catch((error) => {
-        console.log("Error deleting blog", error);
-    });
+        location.reload();
+    })
+    .catch((error) => {
+        console.log("Error deleting blog");
+    })
 }
 
-
-searchInput.addEventListener('input', handleSearch);
-searchButton.addEventListener('click', handleSearch);

@@ -146,6 +146,9 @@ header h1 {
 .dropdown {
     display: none;
   }
+  .btn-group {
+    display: none;
+  }
 
 .channel-item {
     display: flex;
@@ -247,5 +250,3 @@ header h1 {
     max-width: 500px;
     margin: 0 auto;
 }
-
-

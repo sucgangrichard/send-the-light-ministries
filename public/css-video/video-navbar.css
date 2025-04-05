@@ -107,7 +107,7 @@
     font-weight: 600;
 }
 #header .navbar-brand a {
-    color: #5d2b00;
+    color: black;
     display: flex;
     align-items: center;
 }
@@ -120,10 +120,10 @@
     letter-spacing: 0.5px;
 }
 .nav-link {
-    color: #5d2b00;
+    color: black;
 }
 .navbar-brand {
-    color: #5d2b00;
+    color: black;
     font-size: 25px;
     font-family: "Poppins", sans-serif;
     margin-left: 20px;
@@ -132,7 +132,7 @@
     color: #5d2b00;
 }
 .nav-link {
-    color: #5d2b00;
+    color: black;
     margin-right: 25px;
     font-family: "Poppins", sans-serif;
     position: relative;

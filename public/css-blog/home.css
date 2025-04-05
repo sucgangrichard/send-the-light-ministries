@@ -81,7 +81,7 @@
 } */
 
 .link{
-    color: #5d2b00;
+    color: black;
     margin-right: 25px;
     font-family: "Poppins", sans-serif;
     position: relative;
@@ -579,39 +579,7 @@ nav ul li a:hover:after {
   
   .button-57:hover span:last-child {
     transform: translateY(0);
-  } */
-  
-  /* Image Hover Effect */
-  .hero-section .ratio:hover img {
-    transform: scale(1.03);
-    box-shadow: 0 15px 30px rgba(0,0,0,0.3);
   }
+   */
   
-  /* Scroll Reveal Animation */
-  .reveal {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: all 1s ease;
-  }
-  
-  .reveal.active {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  
-  /* Footer Animation */
-  #footer {
-    opacity: 0;
-    animation: fadeInUp 1s ease 2s forwards;
-  }
-  
-  /* Additional Interactive Effects */
-  .featured-badge:hover {
-    transform: translateY(-3px);
-    text-shadow: 0 5px 15px rgba(0,0,0,0.2);
-  }
-  
-  .lead:hover {
-    transform: translateX(10px);
-  }
 

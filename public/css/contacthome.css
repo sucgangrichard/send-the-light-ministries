@@ -29,7 +29,7 @@
 
 .contact .info-box i {
   font-size: 32px;
-  color: var(--primary-color);
+  color: rgb(38, 160, 38);
   border-radius: 50%;
   padding: 8px;
   margin-bottom: 20px;
@@ -76,7 +76,7 @@
 }
 
 .contact .subscription-form .btn-subscribe {
-  background: var(--primary-color);
+  background: rgb(38, 160, 38);
   border: 0;
   padding: 10px 30px;
   color: var(--white-color);
@@ -89,7 +89,7 @@
 }
 
 .contact a {
-    color: var(--primary-color);
+    color: rgb(38, 160, 38);
     text-decoration: none;
     transition: 0.3s;
   }
@@ -132,7 +132,7 @@
     display: block;
     width: 50px;
     height: 3px;
-    background: var(--primary-color);
+    background: rgb(38, 160, 38);
     bottom: 0;
     left: calc(50% - 25px);
   }

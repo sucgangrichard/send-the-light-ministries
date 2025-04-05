@@ -85,8 +85,8 @@
   }
   
   #hero .btn-read-more {
-    background: orange;
-    border: 2px solid orange;
+    background: rgb(38, 160, 38);
+    border: 2px solid rgb(38, 160, 38);
   }
   
   #hero .btn-read-more:hover {

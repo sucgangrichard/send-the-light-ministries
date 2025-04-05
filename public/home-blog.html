@@ -5,32 +5,40 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/jpg" href="../icons/stlp-logo.jpg">
-    <title>Article | Send The Light Ministies - Proper Inc.</title>
+    <title>Featured Article | Send The Light Ministies - Proper Inc.</title>
+
     <link rel="stylesheet" href="../css-blog/home.css">
     <link rel="stylesheet" href="../css/footerhome.css">
+    <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!--bootstrap css-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 </head>
 
 <body>
+    <!--Navbar-->
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
-        <div class="container" id="header">
+        <div class="container" id="header"><!--container-->
             <a class="navbar-brand" href="home-blog.html">
                 <img src="../icons/stlp-logo.jpg" class="logo img-fluid" alt="Send The Light Ministries Logo">
             </a>
+
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            </button> <!--Toggle-->
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent"><!--Toggle Bars-->
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0 links-container">
                     <li class="link-item"><a href="/home.html" class="link">Home</a></li>
                     <li class="link-item"><a class="link" href="/index">Watch</a></li>
+                    <!-- <li class="link-item"><a href="/editor" class="link">Editor</a></li> -->
                 </ul>
-                <div class="d-flex">
+
+                <div class="d-flex"><!--Search Bar-->
                     <div class="search-container">
                         <input type="text" id="searchInput" class="form-control search-input" placeholder="Search..."
                             aria-label="Search">
@@ -38,50 +46,64 @@
                             <i class="fas fa-search"></i>
                         </button>
                     </div>
-                </div>
-            </div>
-        </div>
+                </div><!--Search Bar-->
+            </div><!--toggle Bars-->
+        </div><!--container-->
     </nav>
 
-    <section class="hero-section">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-6">
-                    <span class="featured-badge d-block mb-3 fw-bold">FEATURED ARTICLE</span>
-                    <h1 class="display-4 fw-bold mb-4">Illuminating Lives Through God's Word</h1>
-                    <p class="lead mb-5 text-muted">
-                        Join us in spreading the light of Christ to every corner of the world. Discover transformative
-                        teachings, inspiring testimonies, and practical guidance for your spiritual journey. Explore our
-                        resources to deepen your faith and become a beacon of hope in your community.
-                    </p>
-                    <button class="hero-btn border-0 fw-bold button-57" role="button" href="#articles"><span class="text">Explore more</span><span>Scroll Down</span></button>
-                    
-                </div>
-                <div class="col-lg-6 d-none d-lg-block ">
-                    <div class="ps-5">
-                        <div class="ratio ratio-16x9 bg-light rounded-3 shadow">
-                            <img src="../icons/stlp-logo.jpg" alt="Featured article" class="img-fluid rounded-3 shadow"
-                                style="object-fit: cover;">
-                        </div>
+    <!-- First Section -->
+<section class="hero-section">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                <span class="featured-badge d-block mb-3 fw-bold">FEATURED ARTICLE</span>
+                <h1 class="display-4 fw-bold mb-4">Illuminating Lives Through God's Word</h1>
+                <p class="lead mb-5 text-muted">
+                    Join us in spreading the light of Christ to every corner of the world. Discover transformative teachings, inspiring testimonies, and practical guidance for your spiritual journey. Explore our resources to deepen your faith and become a beacon of hope in your community.
+                </p>
+                <button class="hero-btn border-0 fw-bold button-57" role="button" href="#articles"><span class="text">Explore more</span><span>Scroll Down</span></button>
+            </div>
+            <div class="col-lg-6 d-none d-lg-block ">
+                <div class="ps-5">
+                    <div class="ratio ratio-16x9 bg-light rounded-3 shadow">
+                        <img src="../icons/stlp-logo.jpg" 
+                 alt="Featured article" 
+                 class="img-fluid rounded-3 shadow"
+                 style="object-fit: cover;">
+        </div>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
+</section>
+    <!--Header-->
+    <!-- <header class="header">
+        <div class="content">
+            <h1 class="heading">
+                <span class="small">Welcome in the world of</span> blog
+                <span class="no-fill">writing</span>
+            </h1>
+            <a href="#" class="btn">Write a Blog</a>
         </div>
-    </section>
+    </header> -->
 
+    <!--Blog Section-->
     <section id="articles" class="blogs-section section-bg reveal">
         <div class="container" id="articlemargin">
             <div class="row" id="blogs-row">
+                <!-- Blog cards will be dynamically inserted here -->
             </div>
         </div>
     </section>
 
+    <!-- Footer -->
     <footer id="footer">
+        
+
         <div class="container">
             <div class="copyright">
-                &copy; Copyright <strong><span>Send The Light Ministries - Proper Inc</span></strong>. All Rights
-                Reserved
+                &copy; Copyright <strong><span>Send The Light Ministries - Proper Inc</span></strong>. All Rights Reserved
             </div>
         </div>
     </footer>
@@ -95,27 +117,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
-        <script>
-            // Scroll reveal functionality
-            window.addEventListener('scroll', reveal);
-          
-            function reveal() {
-              const reveals = document.querySelectorAll('.reveal');
-              
-              reveals.forEach(element => {
-                const windowHeight = window.innerHeight;
-                const elementTop = element.getBoundingClientRect().top;
-                const elementVisible = 150;
-          
-                if (elementTop < windowHeight - elementVisible) {
-                  element.classList.add('active');
-                }
-              });
-            }
-            
-            // Initialize reveal on load
-            reveal();
-          </script>
+
+        
 </body>
 
 </html>
