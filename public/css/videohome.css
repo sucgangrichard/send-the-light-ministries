@@ -63,12 +63,12 @@
   }
   
   .videos .play-button i {
-    color: var(--primary-color);
+    color: rgb(38, 160, 38);
     font-size: 24px;
   }
   
   .videos .video-card:hover .play-button {
-    background: var(--primary-color);
+    background: rgb(38, 160, 38);
   }
   
   .videos .video-card:hover .play-button i {

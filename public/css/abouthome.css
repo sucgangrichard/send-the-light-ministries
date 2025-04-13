@@ -107,6 +107,7 @@
 
 
 .full-bg{
+    /* background-image: url('../icons/backgroundarticle.jpg'); */
     background-image: url('../icons/backgroundarticle.jpg');
     background-repeat: no-repeat;
     background-attachment: fixed;

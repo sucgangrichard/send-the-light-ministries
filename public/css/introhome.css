@@ -75,8 +75,8 @@
   }
   
   #hero .btn-replay {
-    background: var(--secondary-color);
-    border: 2px solid var(--secondary-color);
+    background: gold;
+    border: 2px solid gold;
   }
   
   #hero .btn-replay:hover {
