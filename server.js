@@ -79,7 +79,7 @@ app.get("/admin", (req, res) => {
     res.sendFile(path.join(initial_path, "dashboard.html"));
 });
 
-app.get("/:blog([a-zA-Z0-9-]+)", (req, res) => {
+app.get("/:blog", (req, res) => {
     res.sendFile(path.join(initial_path, "blog.html"));
 });
 
