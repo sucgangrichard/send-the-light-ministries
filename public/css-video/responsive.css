@@ -1,34 +1,26 @@
-/* Additional responsive styling for YouTube Feed App */
-
-/* Mobile optimizations */
 @media (max-width: 576px) {
-    /* Header adjustments */
     header h1 {
         font-size: 1.4rem;
     }
-    
-    /* Smaller padding for mobile */
+
     .video-info {
         padding: 10px;
     }
-    
-    /* Adjust list view for mobile */
+
     .video-list-thumbnail {
         width: 90px;
         min-width: 90px;
         height: 50px;
     }
-    
+
     .video-list-info {
         padding-left: 10px;
     }
-    
-    /* Modal adjustments */
+
     .modal-dialog {
         margin: 0.5rem;
     }
-    
-    /* Update notification positioning */
+
     .update-notification {
         left: 20px;
         right: 20px;
@@ -38,45 +30,44 @@
     }
 }
 
-/* Dark mode support */
 @media (prefers-color-scheme: dark) {
     body.dark-mode-support {
         background-color: #121212;
         color: #e0e0e0;
     }
-    
+
     body.dark-mode-support .bg-light {
         background-color: #1e1e1e !important;
         color: #e0e0e0;
     }
-    
+
     body.dark-mode-support .card,
     body.dark-mode-support .list-group-item {
         background-color: #2d2d2d;
         color: #e0e0e0;
         border-color: #444;
     }
-    
+
     body.dark-mode-support .video-card {
         box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
     }
-    
+
     body.dark-mode-support .video-channel,
     body.dark-mode-support .video-meta,
     body.dark-mode-support .video-list-meta {
         color: #aaa;
     }
-    
+
     body.dark-mode-support .modal-content {
         background-color: #2d2d2d;
         color: #e0e0e0;
     }
-    
+
     body.dark-mode-support .btn-outline-secondary {
         color: #aaa;
         border-color: #555;
     }
-    
+
     body.dark-mode-support .btn-outline-secondary:hover,
     body.dark-mode-support .btn-outline-secondary.active {
         background-color: #444;
@@ -84,21 +75,18 @@
     }
 }
 
-/* Loading animation improvements */
 .spinner-border {
     width: 3rem;
     height: 3rem;
 }
 
-/* Smooth transitions */
-.video-card, 
+.video-card,
 .video-list-item,
 .btn,
 .dropdown-item {
     transition: all 0.2s ease-in-out;
 }
 
-/* Hover effects */
 .btn:hover {
     transform: translateY(-2px);
 }
@@ -107,7 +95,6 @@
     background-color: rgba(0, 123, 255, 0.1);
 }
 
-/* Video card improvements */
 .video-card {
     border-radius: 10px;
 }
@@ -116,7 +103,6 @@
     border-radius: 10px 10px 0 0;
 }
 
-/* Empty state improvements */
 .empty-state i {
     opacity: 0.7;
     animation: pulse 2s infinite;
@@ -127,17 +113,18 @@
         transform: scale(1);
         opacity: 0.7;
     }
+
     50% {
         transform: scale(1.05);
         opacity: 0.5;
     }
+
     100% {
         transform: scale(1);
         opacity: 0.7;
     }
 }
 
-/* Channel dropdown improvements */
 .channel-item:hover {
     background-color: rgba(0, 123, 255, 0.1);
 }
@@ -150,7 +137,6 @@
     transform: scale(1.1);
 }
 
-/* Update notification improvements */
 .update-notification {
     animation: slideIn 0.3s ease-out, pulse-light 2s infinite;
 }
@@ -159,15 +145,16 @@
     0% {
         box-shadow: 0 0 0 0 rgba(0, 123, 255, 0.4);
     }
+
     70% {
         box-shadow: 0 0 0 10px rgba(0, 123, 255, 0);
     }
+
     100% {
         box-shadow: 0 0 0 0 rgba(0, 123, 255, 0);
     }
 }
 
-/* Accessibility improvements */
 .btn:focus,
 .form-check-input:focus,
 .dropdown-item:focus {
@@ -175,19 +162,24 @@
     outline: none;
 }
 
-/* Print styles */
 @media print {
-    header, footer, .btn-group, .dropdown, .video-duration, .update-notification {
+
+    header,
+    footer,
+    .btn-group,
+    .dropdown,
+    .video-duration,
+    .update-notification {
         display: none !important;
     }
-    
-    .video-card, .video-list-item {
+
+    .video-card,
+    .video-list-item {
         break-inside: avoid;
         page-break-inside: avoid;
     }
 }
 
-/* Scrollbar styling */
 ::-webkit-scrollbar {
     width: 8px;
     height: 8px;
@@ -207,18 +199,17 @@
     background: #555;
 }
 
-/* Video modal improvements */
 .modal-content {
     border-radius: 15px;
     overflow: hidden;
 }
 
 .modal-header {
-    border-bottom: 1px solid rgba(0,0,0,0.1);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .modal-footer {
-    border-top: 1px solid rgba(0,0,0,0.1);
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 #videoDescription {
@@ -226,7 +217,6 @@
     font-size: 0.9rem;
 }
 
-/* Skeleton loading animation */
 .skeleton-loading {
     position: relative;
     overflow: hidden;
@@ -241,13 +231,11 @@
     bottom: 0;
     left: 0;
     transform: translateX(-100%);
-    background-image: linear-gradient(
-        90deg,
-        rgba(255, 255, 255, 0) 0,
-        rgba(255, 255, 255, 0.2) 20%,
-        rgba(255, 255, 255, 0.5) 60%,
-        rgba(255, 255, 255, 0)
-    );
+    background-image: linear-gradient(90deg,
+            rgba(255, 255, 255, 0) 0,
+            rgba(255, 255, 255, 0.2) 20%,
+            rgba(255, 255, 255, 0.5) 60%,
+            rgba(255, 255, 255, 0));
     animation: shimmer 2s infinite;
 }
 

@@ -1,10 +1,6 @@
-// Reveal Effects JavaScript - Optimized Version
-document.addEventListener('DOMContentLoaded', function() {
-    // Cache DOM elements and viewport height for better performance
+document.addEventListener('DOMContentLoaded', function () {
     const revealElements = document.querySelectorAll('.reveal, .reveal-fade, .reveal-slide-left, .reveal-slide-right, .reveal-zoom');
     let windowHeight = window.innerHeight;
-    
-    // Function to check if element is in viewport with throttling
     function isInViewport(element) {
         const rect = element.getBoundingClientRect();
         return (
@@ -12,11 +8,9 @@ document.addEventListener('DOMContentLoaded', function() {
             rect.bottom >= 0
         );
     }
-
-    // Throttle function to limit execution frequency
     function throttle(func, delay) {
         let lastCall = 0;
-        return function(...args) {
+        return function (...args) {
             const now = new Date().getTime();
             if (now - lastCall < delay) {
                 return;
@@ -25,10 +19,7 @@ document.addEventListener('DOMContentLoaded', function() {
             return func(...args);
         };
     }
-
-    // Function to handle reveal animations
     const revealTargets = document.querySelectorAll('.reveal, .reveal-fade, .reveal-slide-left, .reveal-slide-right, .reveal-zoom');
-    // ...
     function revealCheck() {
         windowHeight = window.innerHeight;
         for (let i = 0; i < revealTargets.length; i++) {
@@ -37,10 +28,9 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
     }
-
     setTimeout(revealCheck, 100);
     window.addEventListener('scroll', throttle(revealCheck, 100));
-    window.addEventListener('resize', throttle(function() {
+    window.addEventListener('resize', throttle(function () {
         windowHeight = window.innerHeight;
         revealCheck();
     }, 100));

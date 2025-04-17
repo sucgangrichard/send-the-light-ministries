@@ -1,176 +1,150 @@
-.about-1{
+.about-1 {
     margin: 0%;
     padding: 5px;
     margin-top: 5%;
 }
 
-.about{
+.about {
     padding-top: 5%;
-  }
-/* #ffff00 */
-.about-1 h1{
-    min-height: 4rem; /* Prevent CLS */
-    line-height: 1.2; /* Better readability */
-    text-align: center; 
+}
+
+.about-1 h1 {
+    min-height: 4rem;
+    line-height: 1.2;
+    text-align: center;
     font-weight: bold;
-	background: linear-gradient(90deg, 
-    #FF7E5F, /* Warm orange */
-    #FEB47B, /* Light orange */
-    #FFD700, /* Gold */
-    #7FFF00, /* Bright green */
-    #00BFFF, /* Sky blue */
-    #FF7E5F  /* Warm orange */);
-	background-size: 400%;
-	-webkit-text-fill-color: transparent;
-	-webkit-background-clip: text;
-	animation: animate 10s linear infinite;
+    background: linear-gradient(90deg,
+            #FF7E5F,
+            #FEB47B,
+            #FFD700,
+            #7FFF00,
+            #00BFFF,
+            #FF7E5F);
+    background-size: 400%;
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    animation: animate 10s linear infinite;
 }
 
 @keyframes animate {
-	0% {
-		background-position: 0%;
-	}
+    0% {
+        background-position: 0%;
+    }
 
-	100% {
-		background-position: 400%;
-	}
+    100% {
+        background-position: 400%;
+    }
 }
-.about-1 p{
+
+.about-1 p {
     text-align: center;
     padding: 3px;
     color: black;
 }
 
-.about-1 ul{
+.about-1 ul {
     text-align: center;
     padding: 3px;
-    /* border-color: #ff0000; */
     color: black;
 }
 
-.about-item{
+.about-item {
     margin-bottom: 20px;
     margin-top: 20px;
-    /* background-color: white; */
     padding: 5rem 1.875rem;
-    /* box-shadow: 0 0 9px rgba(0, 0, 0, 0.6); */
 }
-.about-item i{
+
+.about-item i {
     transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     font-size: 43px;
     margin: 0;
 }
-.about-item h3{
+
+.about-item h3 {
     font-size: 25px;
     margin-bottom: 10px;
 }
-.about-item hr{
+
+.about-item hr {
     width: 46px;
     height: 3px;
     background-color: rgb(0, 255, 0);
     margin: 0 auto;
     border: none;
 }
-.about-item p{
-    max-width: 65ch; /* Optimal line length */
+
+.about-item p {
+    max-width: 65ch;
     margin-top: 20px;
     padding-bottom: 35px;
 }
 
-.about-item ul{
+.about-item ul {
     margin-left: 40px;
     margin-top: 20px;
     padding-bottom: 35px;
-    
     justify-content: center;
 }
 
-.about-item > ul {
+.about-item>ul {
     text-align: left;
 }
-.about-item:hover{
-    /* background-color: #009dff; */
-}
 
-.about-item:hover i, .about-item:hover h3, .about-item:hover p, .about-item:hover ul{
+.about-item:hover {}
+
+.about-item:hover i,
+.about-item:hover h3,
+.about-item:hover p,
+.about-item:hover ul {
     color: #5d2b00;
 }
-.about-item:hover hr{
+
+.about-item:hover hr {
     background-color: #f6ff00;
 }
-.about-item:hover i{
+
+.about-item:hover i {
     transform: translateY(-20px);
 }
-.about-item:hover i, .about-item:hover h3, .about-item:hover hr{
+
+.about-item:hover i,
+.about-item:hover h3,
+.about-item:hover hr {
     transition: all 400ms ease-in-out;
 }
 
-
-.full-bg{
-    /* background-image: url('../icons/backgroundarticle.jpg'); */
+.full-bg {
     background-image: url('../icons/backgroundarticle.jpg');
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
 }
 
-/* @media (min-width: 1024px) {
-    .about-item ul{
-        margin-left: 40px;
-
-    }
-    
-  }
-
-  
-  @media (max-width: 768px) {
-    .about-item ul{
-        margin-left: 40px;
-
-    }
-  } */
-
-  @media screen and (min-width: 527px) and (max-width: 768px){
-   
-    .about-item ul{
+@media screen and (min-width: 527px) and (max-width: 768px) {
+    .about-item ul {
         margin-left: 85px;
-
     }
-  }
+}
 
-  @media screen and (min-width: 768px) and (max-width: 993px){
-   
-    .about-item ul{
+@media screen and (min-width: 768px) and (max-width: 993px) {
+    .about-item ul {
         margin-left: 5px;
-
     }
-  }
+}
 
-  @media screen and (min-width: 993px) and (max-width: 1024px){
-   
-    .about-item ul{
+@media screen and (min-width: 993px) and (max-width: 1024px) {
+    .about-item ul {
         margin-left: 30px;
-
     }
-  }
+}
 
-
-  @media screen and (min-width: 320px) and (max-width: 425px) {
-   
-    .about-item{
+@media screen and (min-width: 320px) and (max-width: 425px) {
+    .about-item {
         margin-bottom: 20px;
-
         padding: 20px 12px;
-        /* box-shadow: 0 0 9px rgba(0, 0, 0, 0.6); */
     }
 
-    .about-1{
-
+    .about-1 {
         margin-top: 70px;
     }
-  }
-
-
-
-
-
+}

@@ -1,12 +1,10 @@
-/* YouTube Feed App - Custom Styling */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-/* General Styles */
+
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: #f8f9fa;
 }
 
-/* Header Styles */
 header {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
@@ -16,9 +14,6 @@ header h1 {
     margin-bottom: 0;
 }
 
-
-
-/* Video Card Styles */
 .video-card {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     height: 100%;
@@ -85,7 +80,6 @@ header h1 {
     color: #606060;
 }
 
-/* List View Styles */
 .video-list-item {
     transition: background-color 0.2s ease;
 }
@@ -139,18 +133,18 @@ header h1 {
     color: #606060;
 }
 
-/* Channel Selection Dropdown */
 .dropdown-menu {
     max-height: 300px;
     overflow-y: auto;
-    
 }
+
 .dropdown {
     display: none;
-  }
-  .btn-group {
+}
+
+.btn-group {
     display: none;
-  }
+}
 
 .channel-item {
     display: flex;
@@ -165,28 +159,25 @@ header h1 {
     margin-right: 10px;
 }
 
-/* Loading Spinner */
 #loadingSpinner {
     min-height: 200px;
 }
 
-/* Responsive Adjustments */
 @media (max-width: 767.98px) {
     .video-list-thumbnail {
         width: 100px;
         height: 56px;
     }
-    
+
     header h1 {
         font-size: 1.5rem;
     }
-    
+
     .btn-group {
         margin-top: 10px;
     }
 }
 
-/* Video Modal */
 .modal-content {
     border-radius: 10px;
     overflow: hidden;
@@ -197,7 +188,6 @@ header h1 {
     overflow-y: auto;
 }
 
-/* Auto-update Notification */
 .update-notification {
     position: fixed;
     bottom: 20px;
@@ -224,13 +214,13 @@ header h1 {
         transform: translateY(100px);
         opacity: 0;
     }
+
     to {
         transform: translateY(0);
         opacity: 1;
     }
 }
 
-/* Empty state */
 .empty-state {
     text-align: center;
     padding: 50px 20px;

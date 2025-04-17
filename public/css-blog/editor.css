@@ -1,6 +1,4 @@
-/* Combined theme CSS with blog elements support */
 :root {
-    /* Light Mode Variables - General */
     --primary-color: #3498db;
     --secondary-color: #2980b9;
     --text-color: #333;
@@ -24,20 +22,9 @@
     --article-code-bg: #f5f5f5;
     --article-code-text: #333;
     --article-image-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    
-    /* Blog-specific variables */
-    /* --banner-bg: #e7e7e7;
-    --title-color: #2d2d2d;
-    --article-color: #2d2d2d;
-    --placeholder-color: #2d2d2d;
-    --scrollbar-thumb: rgba(0, 0, 0, 0.1);
-    --blog-options-bg: #fff;
-    --btn-grey-bg: #a5a5a5;
-    --btn-grey-color: #fff; */
 }
 
 body.dark-mode {
-    /* Dark Mode Variables - General */
     --primary-color: #4dabf7;
     --secondary-color: #339af0;
     --text-color: #e9ecef;
@@ -61,51 +48,24 @@ body.dark-mode {
     --article-code-bg: #2d3748;
     --article-code-text: #e2e8f0;
     --article-image-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-    
-    /* Blog-specific variables */
-    /* --banner-bg: #333333;
-    --title-color: #e9ecef;
-    --article-color: #e9ecef;
-    --placeholder-color: #adb5bd;
-    --scrollbar-thumb: rgba(255, 255, 255, 0.2);
-    --blog-options-bg: #343a40;
-    --btn-grey-bg: #6c757d;
-    --btn-grey-color: #fff; */
 }
 
-/* Base Styles */
 body {
     background-color: var(--bg-color);
     color: var(--text-color);
     transition: background-color 0.3s, color 0.3s;
-    /* font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; */
     line-height: 1.6;
 }
-
-
-
-/*Banner*/
 
 .banner {
     width: 100%;
     height: 400px;
     position: relative;
-    background: var(--banner-bg);
+    background: var(--banner-overlay);
     background-size: cover;
     background-position: center;
     transition: background 0.3s ease;
 }
-
-/* .banner::after {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background: var(--banner-overlay);
-    top: 0;
-    left: 0;
-    transition: background 0.3s;
-} */
 
 .banner-upload-btn {
     position: absolute;
@@ -131,8 +91,7 @@ body.dark-mode .banner-upload-btn img {
     filter: brightness(0.9);
 }
 
-/* Blog Section */
-.blog{
+.blog {
     width: 70vw;
     min-width: 400px;
     height: 100px;
@@ -141,7 +100,7 @@ body.dark-mode .banner-upload-btn img {
     padding: 50px 0;
 }
 
-textarea::-webkit-scrollbar{
+textarea::-webkit-scrollbar {
     width: 10px;
 }
 
@@ -151,7 +110,8 @@ textarea::-webkit-scrollbar-thumb {
     transition: background 0.3s ease;
 }
 
-.title,.article{
+.title,
+.article {
     width: 100%;
     min-height: 100px;
     height: auto;
@@ -184,7 +144,6 @@ textarea::-webkit-scrollbar-thumb {
     color: var(--article-color);
 }
 
-/* Blog Options */
 .blog-options {
     position: fixed;
     bottom: 0;
@@ -206,22 +165,20 @@ textarea::-webkit-scrollbar-thumb {
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-.btn.grey{
+.btn.grey {
     background: var(--btn-grey-bg);
     color: var(--btn-grey-color);
     margin-left: 20px;
     font-size: 14px;
 }
+
 .btn:hover {
     background-color: var(--secondary-color);
 }
 
-/* Additional dark mode specific adjustments */
-body.dark-mode
-{
+body.dark-mode {
     box-shadow: none;
-    background-color: black ;
-    /* color: var(--text-color); */
+    background-color: black;
 }
 
 body.dark-mode p {
@@ -232,12 +189,10 @@ body.dark-mode h1 {
     color: white;
 }
 
-body.dark-mode .blog a{
+body.dark-mode .blog a {
     color: white;
 }
 
-
-/* Theme Switch Styles */
 .theme-switch-wrapper {
     display: flex;
     align-items: center;
@@ -279,11 +234,11 @@ body.dark-mode .blog a{
     border-radius: 50%;
 }
 
-input:checked + .slider {
+input:checked+.slider {
     background-color: var(--primary-color);
 }
 
-input:checked + .slider:before {
+input:checked+.slider:before {
     transform: translateX(24px);
 }
 

@@ -1,43 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/jpg" href="../icons/logo.png">
     <title>Create | Send The Light Ministies - Proper Inc.</title>
-
     <link rel="stylesheet" href="../css-blog/home.css">
     <link rel="stylesheet" href="../css-blog/editor.css">
     <link rel="stylesheet" href="../css/footerhome.css">
 </head>
+
 <body>
-    <!--Banner Section-->
     <div class="banner">
         <input type="file" accept="image/*" id="banner-upload" hidden>
         <label for="banner-upload" class="banner-upload-btn"><img src="../icons/upload.png" alt="upload banner"></label>
     </div>
-
-    <!--blog Section-->
     <div class="blog">
         <textarea type="text" class="title" placeholder="Blog Title..."></textarea>
-        <textarea type="text" class="article" placeholder="Start Writing Here..."></textarea>     
+        <textarea type="text" class="article" placeholder="Start Writing Here..."></textarea>
     </div>
-
-     <div class="blog-options">
+    <div class="blog-options">
         <button class="btn dark publish-btn">publish</button>
         <input type="file" accept="image/*" id="image-upload" hidden>
         <label for="image-upload" class="btn grey upload-btn">Upload Image</label>
-     </div>
-
-     <!-- Footer -->
-    
-
-     <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/8.10.1/firebase-app.js"></script>
-     <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/8.10.1/firebase-firestore.js"></script>
-     <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/8.10.1/firebase-auth.js"></script>
-     <script src="https://www.gstatic.com/firebasejs/ui/6.0.1/firebase-ui-auth.js"></script>
-    <script src="../js/firebase.js"></script>   
-     <script src="../js/editor.js"></script>
-     <script src="../js/nav.js"></script>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/8.10.1/firebase-app.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/8.10.1/firebase-firestore.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/8.10.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/ui/6.0.1/firebase-ui-auth.js"></script>
+    <script src="../js/firebase.js"></script>
+    <script src="../js/editor.js"></script>
+    <script src="../js/nav.js"></script>
+    <script src="../js/env.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
+
 </html>
