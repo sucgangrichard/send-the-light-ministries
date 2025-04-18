@@ -32,6 +32,9 @@ app.get('/', (req, res) => {
 app.get('/write-blog', (req, res) => {
     res.sendFile(path.join(initial_path, "editor.html"));
 });
+app.get('/donation-form', (req, res) => {
+    res.sendFile(path.join(initial_path, "donation-form.html"));
+});
 app.get("/featured-articles", (req, res) => {
     res.sendFile(path.join(initial_path, "home-blog.html"));
 });
@@ -95,6 +98,11 @@ app.post('/api/force-update', async (req, res) => {
         res.status(500).json({ error: 'Failed to update videos' });
     }
 });
+
+// Add payment routes
+const paymentRoutes = require('./server/payment');
+app.use('/api', paymentRoutes);
+
 app.post('/api/channels', async (req, res) => {
     try {
         const { channelId } = req.body;

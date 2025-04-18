@@ -23,7 +23,7 @@
 <body>
     <nav class="navbar navbar-expand-lg sticky-top navbar-light bg-light">
         <div class="container" id="header">
-            <a class="navbar-brand" href="#"><img src="../icons/logo.png" alt="Send The Light Ministries Logo"
+            <a class="navbar-brand" href="/"><img src="../icons/logo.png" alt="Send The Light Ministries Logo"
                     class="img-fluid">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -34,7 +34,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" href="/home">Home</a>
+                        <a class="nav-link active" href="/">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#about">About</a>
@@ -62,7 +62,7 @@
                         Maglaya.</h2>
                     <div class="d-flex justify-content-center reveal-fade delay-3">
                         <a href="/featured-videos" class="btn-replay"><i class="fas fa-redo"></i> Watch</a>
-                        <a href="#about" class="btn-read-more"><i class="fas fa-eye"></i> Explore</a>
+                        <a href="/featured-articles" class="btn-read-more"><i class="fas fa-eye"></i> Explore</a>
                     </div>
                 </div>
             </div>
@@ -335,7 +335,7 @@
                     <div class="col-lg-4 col-md-6 footer-links reveal-slide-left delay-1">
                         <h4>Useful Links</h4>
                         <ul>
-                            <li><i class="fas fa-chevron-right"></i> <a href="#hero">Home</a></li>
+                            <li><i class="fas fa-chevron-right"></i> <a href="/">Home</a></li>
                             <li><i class="fas fa-chevron-right"></i> <a href="#about">About us</a></li>
                             <li><i class="fas fa-chevron-right"></i> <a href="/featured-articles">Articles</a></li>
                             <li><i class="fas fa-chevron-right"></i> <a href="/featured-videos">Videos</a></li>
@@ -357,7 +357,7 @@
             </div>
         </div>
     </footer>
-    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="fas fa-arrow-up"></i></a>
+    <!-- <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="fas fa-arrow-up"></i></a> -->
     <script src="../js/toparrowhome.js"></script>
     <script src="../js/reveal.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
@@ -415,6 +415,37 @@
                 });
         });
     </script>
+    <style>
+        .floating-support-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .floating-support-btn:hover {
+            background-color: #45a049;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+            color: white;
+        }
+        .floating-support-btn i {
+            font-size: 18px;
+        }
+    </style>
+    <a href="/donation-form" class="floating-support-btn">
+        <i class="fas fa-hand-holding-heart"></i>
+        Support Us
+    </a>
 </body>
 
 </html>
