@@ -21,7 +21,7 @@ const setupBlog = (data) => {
         if (data.author == auth.currentUser.email.split("@")[0]) {
             let editBtn = document.getElementById('edit-blog-btn');
             editBtn.style.display = "inline";
-            editBtn.href = `/write-blog?id=${blogId}`;
+            editBtn.href = `${blogId}/write-blog`;
         }
     } catch {
     }

@@ -1,10 +1,10 @@
 let firebaseConfig = {
-  apiKey: "AIzaSyBm3o7PpVFlpdld4ih-6ZpoL-fXIZOf0A8",
-  authDomain: "stlp-project-e347f.firebaseapp.com",
-  projectId: "stlp-project-e347f",
-  storageBucket: "stlp-project-e347f.firebasestorage.app",
-  messagingSenderId: "187979954654",
-  appId: "1:187979954654:web:2101a212b962fb26d6054f"
+  apiKey: window.ENV_FIREBASE_API_KEY,
+  authDomain: window.ENV_FIREBASE_AUTH_DOMAIN,
+  projectId: window.ENV_FIREBASE_PROJECT_ID,
+  storageBucket: window.ENV_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: window.ENV_FIREBASE_MESSAGING_SENDER_ID,
+  appId: window.ENV_FIREBASE_APP_ID
 };
 firebase.initializeApp(firebaseConfig);
 firebase.initializeApp(firebaseConfig);

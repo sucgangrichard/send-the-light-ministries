@@ -6,7 +6,7 @@ require('dotenv').config();
 const router = express.Router();
 router.use(cors());
 
-const PAYMONGO_SECRET_KEY = process.env.PAYMONGO_SECRET_KEY || 'sk_test_dqn46uircFsE8QENHF9xqnso';
+const PAYMONGO_SECRET_KEY = process.env.PAYMONGO_SECRET_KEY;
 
 // Create payment link
 router.post('/create-payment-link', async (req, res) => {

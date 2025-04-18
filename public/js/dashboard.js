@@ -60,7 +60,7 @@ const createBlog = (blog) => {
             <p class="blog-overview flex-grow-1">${stripHtmlAndMarkdown(data.article).substring(0, 200) + '...'}</p>
             <div class="btn-group mt-3">
                 <a href="/${blog.id}" class="btn-read">Read</a>
-                <a href="/write-blog?id=${blog.id}" class="btn-edit">Edit</a>
+                <a href="${blog.id}/write-blog" class="btn-edit">Edit</a>
                 <button onclick="deleteBlog('${blog.id}')" class="btn-delete">Delete</button>
             </div>
         </div>
