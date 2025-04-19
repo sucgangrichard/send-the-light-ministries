@@ -441,6 +441,41 @@
         .floating-support-btn i {
             font-size: 18px;
         }
+        
+        /* Media queries for responsive support button */
+        @media screen and (max-width: 768px) {
+            .floating-support-btn {
+                padding: 12px 20px;
+                font-size: 14px;
+            }
+            .floating-support-btn i {
+                font-size: 16px;
+            }
+        }
+        
+        @media screen and (max-width: 425px) {
+            .floating-support-btn {
+                padding: 10px 16px;
+                bottom: 15px;
+                right: 13%;
+                font-size: 13px;
+            }
+            .floating-support-btn i {
+                font-size: 14px;
+            }
+        }
+        
+        @media screen and (max-width: 320px) {
+            .floating-support-btn {
+                padding: 8px 14px;
+                bottom: 10px;
+                right: 10px;
+                font-size: 12px;
+            }
+            .floating-support-btn i {
+                font-size: 13px;
+            }
+        }
     </style>
     <a href="/donation-form" class="floating-support-btn">
         <i class="fas fa-hand-holding-heart"></i>
