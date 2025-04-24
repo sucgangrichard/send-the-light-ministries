@@ -25,20 +25,50 @@ const uploadImage = (uploadFile, uploadType) => {
             uploadFile.value = "";
             return;
         }
+        
+        // Show loading indicator
+        Swal.fire({
+            title: 'Uploading...',
+            text: 'Please wait while we upload your image.',
+            allowOutsideClick: false,
+            didOpen: () => {
+                Swal.showLoading();
+            }
+        });
+        
         const formdata = new FormData();
         formdata.append('image', file);
+        
         fetch('/uploads', {
             method: 'post',
             body: formdata
-        }).then(res => res.json())
-            .then(data => {
-                if (uploadType == "image") {
-                    addImage(data, file.name);
-                } else {
-                    bannerPath = `${location.origin}/${data}`;
-                    banner.style.backgroundImage = `url("${bannerPath}")`;
-                }
-            })
+        })
+        .then(res => {
+            if (!res.ok) {
+                throw new Error(`Server responded with ${res.status}: ${res.statusText}`);
+            }
+            return res.json();
+        })
+        .then(data => {
+            Swal.close();
+            if (uploadType == "image") {
+                addImage(data, file.name);
+            } else {
+                bannerPath = `${location.origin}/${data}`;
+                banner.style.backgroundImage = `url("${bannerPath}")`;
+            }
+        })
+        .catch(error => {
+            console.error('Upload error:', error);
+            Swal.fire({
+                icon: 'error',
+                title: 'Upload Failed',
+                text: 'There was an error uploading your image. Please try again or use a smaller image file.',
+                confirmButtonText: 'OK',
+                confirmButtonColor: '#3085d6'
+            });
+            uploadFile.value = "";
+        });
     } else {
         Swal.fire({
             icon: 'error',
